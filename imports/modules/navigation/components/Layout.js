@@ -15,7 +15,7 @@ export default class Layout extends Component {
 
   static defaultProps = {
     sideMenus: [],
-    navBarClasses: 'bar-dark',
+    navBarClasses: '',
     title: '',
   }
 

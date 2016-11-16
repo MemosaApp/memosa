@@ -1,1 +1,1 @@
-export const APP_NAME = 'Banditorium';
+export const APP_NAME = 'Memosa';
