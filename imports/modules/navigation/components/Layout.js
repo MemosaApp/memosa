@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import { IonNavView, IonView, IonNavBar, IonSideMenuContainer, IonSideMenus, IonSideMenuContent } from 'reactionic';
+import { IonContent, IonNavView, IonView, IonNavBar, IonSideMenuContainer, IonSideMenus, IonSideMenuContent } from 'reactionic';
+
+import { APP_NAME } from '/imports/modules/app/constants';
 
 const { arrayOf, node, object, oneOfType, string } = PropTypes;
 
@@ -16,7 +18,15 @@ export default class Layout extends Component {
   static defaultProps = {
     sideMenus: [],
     navBarClasses: '',
-    title: '',
+    title: APP_NAME,
+  }
+
+  static contextTypes = {
+    ionSnapper: object,
+  }
+
+  componentDidMount() {
+    this.context.ionSnapper.settings({ disable: 'right' })
   }
 
   render() {
@@ -43,7 +53,9 @@ export default class Layout extends Component {
           />
           <IonNavView customClasses="">
             <IonView customClasses="">
-              {React.cloneElement(children, {})}
+              <IonContent>
+                {React.cloneElement(children, {})}
+              </IonContent>
             </IonView>
           </IonNavView>
         </IonSideMenuContent>

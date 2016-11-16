@@ -10,8 +10,7 @@
     "tests": "meteor test --once --driver-package dispatch:mocha-phantomjs",
     "chimp-watch": "chimp --ddp=http://localhost:3000 --watch --mocha --path=tests",
     "chimp-test": "chimp --ddp=http://localhost:3000 --mocha --path=tests --browser=phantomjs",
-
-    "postinstall": "cp -R node_modules/reactionic/dist/scss/fonts ./public/fonts"
+    "postinstall": "./.scripts/postinstall.sh"
   },
   "dependencies": {
     "aws-lib": "^0.3.0",
