@@ -22,11 +22,25 @@ export default class Layout extends Component {
   }
 
   static contextTypes = {
+    ionPlatform: object,
     ionSnapper: object,
   }
 
   componentDidMount() {
-    this.context.ionSnapper.settings({ disable: 'right' })
+    // Wait a few frames
+    setTimeout(() => {
+      const { ionPlatform, ionSnapper } = this.context;
+
+      if (ionSnapper) {
+        ionSnapper.settings({ disable: 'right' });
+
+        if (!(ionPlatform.isIos || ionPlatform.isAndroid)) {
+          ionSnapper.settings({ touchToDrag: false });
+        }
+      } else {
+        // TODO try again later
+      }
+    }, 0);
   }
 
   render() {

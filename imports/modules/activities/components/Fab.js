@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Fab, { FabButton, FabActions, FabAction } from '/imports/Fab';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
+import Icon from '/imports/Icons';
 
 import { NOTE_ROUTE, NOTE_CREATE_ROUTE } from '/imports/modules/notes/constants';
 import { GROUP_CREATE_ROUTE } from '/imports/modules/groups/constants';
@@ -32,7 +33,11 @@ class ActivityFab extends Component {
     return (
       <Fab style={{ right: '20px', bottom: '20px' }}>
         <FabButton>
-          <i className="ion-android-add"></i>
+          <Icon
+            defaultIcon="ion-android-add"
+            iosIcon="ion-ios-plus-empty"
+          />
+          <i className=""></i>
         </FabButton>
         <FabActions>
           <FabAction
@@ -40,14 +45,19 @@ class ActivityFab extends Component {
             onClick={this.handleCreateGroup}
             tooltip="Create Group"
           >
-            <i className="ion-ios-people"></i>
+            <Icon
+              defaultIcon="ion-android-people"
+              iosIcon="ion-ios-people"
+            />
           </FabAction>
           <FabAction
             className="button button-balanced"
             onClick={this.handleCreateNote}
             tooltip="Create Note"
           >
-            <i className="ion-edit"></i>
+            <Icon
+              defaultIcon="ion-edit"
+            />
           </FabAction>
         </FabActions>
       </Fab>
