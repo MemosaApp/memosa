@@ -14,6 +14,11 @@
   text-align: center;
   width: 50px;
   z-index: 998; // TODO use a _variable
+  transition: background-color 0.2s; // TODO use a variable
+
+  &:hover {
+    background-color: lighten($app-memosa, 10);
+  }
 
   > * {
     display: block;
@@ -30,18 +35,19 @@
 
 .fab-actions {
   bottom: 50px;
-  height: 0;
+  max-height: 0;
   opacity: 0;
   overflow: hidden;
   position: absolute;
   width: 50px;
 
-  transition: transform 0.2s; // TODO refactor time as variable
+  transition-duration: 0.2s; // TODO refactor time as variable
+  transition-property: transform max-height opacity;
 }
 
 .fab-actions--active {
   opacity: 1;
-  height: auto;
+  max-height: 1000px;
 }
 
 .fab-action {
@@ -54,6 +60,8 @@
   height: 36px;
   line-height: 36px;
   margin: 0 7px 15px;
+  min-height: 36px;
+  min-width: 36px;
   text-align: center;
   width: 36px;
   z-index: 998; // TODO use a _variable

@@ -9,6 +9,13 @@ neo4j in order to use the recommendation engine.
 
 ```
 meteor npm run lint
+
+# Run all tests
+meteor npm run test
+
+# Run all module tests
+meteor npm run test:modules
+
 ```
 
 ## Feature tests

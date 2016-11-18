@@ -6,8 +6,8 @@
     "lint": "eslint .",
     "pretest": "npm run lint --silent",
     "predeploy": "meteor npm prune",
-    "tests-watch": "meteor test --driver-package practicalmeteor:mocha --port 9999",
-    "tests": "meteor test --once --driver-package dispatch:mocha-phantomjs",
+    "tests-watch": "meteor test --driver-package practicalmeteor:mocha-phantomjs --port 9999",
+    "tests": "meteor test --once --driver-package dispatch:mocha-phantomjs --port 9999",
     "chimp-watch": "chimp --ddp=http://localhost:3000 --watch --mocha --path=tests",
     "chimp-test": "chimp --ddp=http://localhost:3000 --mocha --path=tests --browser=phantomjs",
     "postinstall": "./.scripts/postinstall.sh"
@@ -27,12 +27,13 @@
     "eslint-plugin-react": "^6.7.1",
     "meteor-node-stubs": "^0.2.4",
     "promise": "^7.1.1",
-    "react": "^15.3.2",
+    "react": "^15.4.0",
     "react-a11y": "^0.3.3",
     "react-addons-pure-render-mixin": "^15.3.2",
-    "react-dom": "^15.3.2",
+    "react-dom": "^15.4.0",
     "react-redux": "^4.4.6",
     "react-router": "^3.0.0",
+    "react-router-redux": "^4.0.7",
     "reactionic": "^1.1.2",
     "redux": "^3.6.0"
   },
@@ -44,7 +45,9 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-2": "^6.13.0",
     "chai": "^3.5.0",
+    "chai-enzyme": "^0.6.0",
     "chimp": "^0.41.1",
+    "enzyme": "^2.6.0",
     "eslint": "^3.6.1",
     "eslint-import-resolver-meteor": "^0.3.3",
     "eslint-plugin-chai-expect": "^1.1.1",
@@ -55,6 +58,9 @@
     "eslint-plugin-no-use-extend-native": "^0.3.8",
     "eslint-plugin-promise": "^2.0.1",
     "eslint-plugin-react": "^6.3.0",
-    "meteor-node-stubs": "^0.2.3"
+    "jsdom": "^9.8.3",
+    "meteor-node-stubs": "^0.2.3",
+    "react-addons-test-utils": "^15.4.0",
+    "sinon": "^1.17.6"
   }
 }

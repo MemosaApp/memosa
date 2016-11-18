@@ -7,17 +7,29 @@ export default class FabAction extends Component {
   static propTypes = {
     active: bool,
     children: node,
+    className: string,
     tooltip: string,
   }
 
-  render() {
-    const { active, children, tooltip, ...props } = this.props;
+  static defaultProps = {
+    className: '',
+  }
 
-    const className = classnames(
+  render() {
+    const {
+      active,
+      children,
+      className,
+      tooltip,
+      ...props
+    } = this.props;
+
+    const buttonClassName = classnames(
+      className,
       'fab-action',
       {
         'fab-action--active': active,
-      }
+      },
     );
 
     const tooltipClassName = classnames(
@@ -28,7 +40,7 @@ export default class FabAction extends Component {
     );
 
     const button = (
-      <button className={className} {...props}>
+      <button className={buttonClassName} {...props}>
         {
           React.Children.map(children, (element, index) => {
             const options = {
