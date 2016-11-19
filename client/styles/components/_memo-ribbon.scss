@@ -1,0 +1,50 @@
+.memo-ribbon {
+  background-color: #fff;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+
+  ul {
+    border-top: 1px solid #ccc;
+    display: flex;
+    flex-direction: row;
+  }
+
+  li {
+    display: flex;
+    flex: 1;
+  }
+
+  li + li {
+    border-left: 1px solid #ccc;
+  }
+
+  button {
+    background-color: transparent;
+    border: 0;
+    display: flex;
+    flex: 1;
+    font-size: $dark;
+    text-align: center;
+
+    transition: all 0.2s ease; // TODO use a variable
+    transition-property: background-color;
+
+    &:hover {
+      background-color: lighten($app-memosa, 15);
+    }
+
+    &:active,
+    &:focus {
+      background-color: lighten($app-memosa, 10);
+    }
+  }
+
+  i {
+    @include rem(font-size, 20px);
+    margin: 0 auto;
+    text-align: center;
+  }
+}

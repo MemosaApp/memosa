@@ -1,0 +1,42 @@
+.memo-input-group {
+  margin-bottom: 34px;
+  position: relative;
+
+  .DraftEditor-root {
+    font-family: $font-family-serif;
+    font-size: 16px;
+  }
+
+  .DraftEditor-editor {
+    border-top: 1px solid #ddd;
+    cursor: text;
+    font-size: 18px;
+    margin-top: 10px;
+  }
+
+  .DraftEditor-editor .public-DraftEditorPlaceholder-root,
+  .DraftEditor-editor .public-DraftEditor-content {
+    margin: 0 -15px -15px;
+    padding: 15px;
+  }
+
+  .public-DraftEditorPlaceholder-root {
+    color: $input-color-placeholder;
+    position: absolute;
+    z-index: 99;
+  }
+
+  .DraftEditor-editorContainer {
+    position: relative;
+    z-index: 100;
+  }
+
+  .public-DraftEditor-content {
+    min-height: 100px;
+    z-index: 100;
+  }
+}
+
+.memo-input-group--hide-placeholder .public-DraftEditorPlaceholder-root {
+  display: none;
+}

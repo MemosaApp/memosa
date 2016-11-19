@@ -24,7 +24,7 @@ $dark:                            #333;
 $font-family-sans-serif:           '-apple-system', "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
 
 $font-family-light-sans-serif:    '-apple-system', "HelveticaNeue-Light", "Roboto-Light", "Segoe UI-Light", sans-serif-light;
-$font-family-serif:               serif;
+$font-family-serif:               'Georgia', serif;
 $font-family-monospace:           monospace;
 
 $font-family-base:                $font-family-sans-serif;
@@ -762,3 +762,7 @@ $z-index-click-block:             99999 !default;
 // -------------------------------
 
 $ios-statusbar-height:           20px !default;
+
+// App
+
+$memo-ribbon-height:             34px;

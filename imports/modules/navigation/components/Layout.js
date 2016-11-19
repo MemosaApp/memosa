@@ -1,11 +1,12 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import { IonContent, IonNavView, IonView, IonNavBar, IonSideMenuContainer, IonSideMenus, IonSideMenuContent } from 'reactionic';
 
 import { APP_NAME } from '/imports/modules/app/constants';
 
 const { arrayOf, node, object, oneOfType, string } = PropTypes;
 
-export default class Layout extends Component {
+class Layout extends Component {
   static propTypes = {
     children: node,
     leftButton: node,
@@ -22,21 +23,34 @@ export default class Layout extends Component {
   }
 
   static contextTypes = {
-    ionPlatform: object,
     ionSnapper: object,
   }
 
   componentDidMount() {
     // Wait a few frames
     setTimeout(() => {
-      const { ionPlatform, ionSnapper } = this.context;
+      const { ionSnapper } = this.context;
 
       if (ionSnapper) {
-        ionSnapper.settings({ disable: 'right' });
+        ionSnapper.settings({
+          disable: 'right',
+          touchToDrag: false,
+          hyperextensible: false
+        });
+        ionSnapper.on('open', () => {
+          window.document.body.className += ' menu-open';
+        });
+        ionSnapper.on('close', () => {
+          window.document.body.className = window.document.body.className.replace('menu-open', '');
+        });
 
-        if (!(ionPlatform.isIos || ionPlatform.isAndroid)) {
-          ionSnapper.settings({ touchToDrag: false });
-        }
+        const modalOverlay = window.document.createElement('DIV');
+        modalOverlay.className += 'menu-overlay';
+        window.document.body.appendChild(modalOverlay);
+
+        window.document.getElementsByClassName('menu-overlay')[0].addEventListener('click', () => {
+          ionSnapper.close();
+        });
       } else {
         // TODO try again later
       }
@@ -55,9 +69,13 @@ export default class Layout extends Component {
 
     return (
       <IonSideMenuContainer>
-        <IonSideMenus>
-          {SideMenuComponents}
-        </IonSideMenus>
+        {
+          SideMenuComponents ?
+          <IonSideMenus>
+            {SideMenuComponents}
+          </IonSideMenus> :
+          null
+        }
         <IonSideMenuContent>
           <IonNavBar
             customClasses={navBarClasses}
@@ -77,3 +95,11 @@ export default class Layout extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    ...state.navigation.options,
+  };
+};
+
+export default connect(mapStateToProps)(Layout);

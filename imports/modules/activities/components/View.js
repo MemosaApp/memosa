@@ -1,35 +1,42 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 
-import Layout from '/imports/modules/navigation/components/Layout';
+import { setNavigation } from '/imports/modules/navigation/actions';
 import SideMenuButton from '/imports/modules/navigation/components/SideMenuButton';
 import AlertMenuButton from '/imports/modules/navigation/components/AlertMenuButton';
 import SideMenu from '/imports/modules/navigation/components/SideMenu';
 
 import Fab from './Fab';
 
-const { shape } = PropTypes;
+const { func } = PropTypes;
 
 class ActivityView extends Component {
   static propTypes = {
-    params: shape({
+    handleSetNavigation: func.isRequired,
+  }
 
-    })
+  componentWillMount() {
+    this.props.handleSetNavigation({
+      leftButton: <SideMenuButton />,
+      rightButton: <AlertMenuButton />,
+      sideMenus: [<SideMenu key={1} />],
+    });
   }
 
   render() {
     return (
-      <Layout
-        leftButton={<SideMenuButton />}
-        rightButton={<AlertMenuButton />}
-        sideMenus={[<SideMenu key={1} />]}
-      >
-        <div>
-          Hello
-          <Fab />
-        </div>
-      </Layout>
+      <div>
+        Hello
+        <Fab />
+      </div>
     );
   }
 }
 
-export default ActivityView;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleSetNavigation: (...args) => dispatch(setNavigation(...args)),
+  };
+}
+
+export default connect(null, mapDispatchToProps)(ActivityView);

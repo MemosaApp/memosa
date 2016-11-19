@@ -19,4 +19,15 @@
   }
 }
 
-@import 'fab';
+// fourseven:scss has a horrible bug where it can't import multiple
+// scss files that have the same name
+@import 'app-mixins';
+
+@import 'components/input';
+@import 'components/menu';
+@import 'components/modal';
+@import 'components/fab';
+
+@import 'components/memo-input-group';
+@import 'components/memo-ribbon';
+@import 'components/notes-form';

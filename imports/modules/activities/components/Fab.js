@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import Icon from '/imports/Icons';
 
-import { NOTE_ROUTE, NOTE_CREATE_ROUTE } from '/imports/modules/notes/constants';
+import { MEMO_ROUTE, MEMO_CREATE_ROUTE } from '/imports/modules/memos/constants';
 import { GROUP_CREATE_ROUTE } from '/imports/modules/groups/constants';
 
 const { func } = PropTypes;
@@ -18,7 +18,7 @@ class ActivityFab extends Component {
     event && event.preventDefault();
 
     this.props.handlePush(
-      [NOTE_ROUTE, NOTE_CREATE_ROUTE].join('/')
+      [MEMO_ROUTE, MEMO_CREATE_ROUTE].join('/')
     );
   }
 
@@ -53,7 +53,7 @@ class ActivityFab extends Component {
           <FabAction
             className="button button-balanced"
             onClick={this.handleCreateNote}
-            tooltip="Create Note"
+            tooltip="Create Memo"
           >
             <Icon
               defaultIcon="ion-edit"
