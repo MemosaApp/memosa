@@ -23,10 +23,11 @@
 
   button {
     background-color: transparent;
+    color: $dark;
     border: 0;
     display: flex;
     flex: 1;
-    font-size: $dark;
+    @include rem(font-size, 16px);
     text-align: center;
 
     transition: all 0.2s ease; // TODO use a variable

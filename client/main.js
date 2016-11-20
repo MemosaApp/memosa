@@ -1,5 +1,6 @@
 import 'jquery';
 import 'materialize-css';
+import 'react-fastclick';
 
 import React from 'react';
 import { Meteor } from 'meteor/meteor';

@@ -1,6 +1,10 @@
 @import 'variables';
 @import "{}/node_modules/reactionic/dist/scss/styles/reactionic";
 
+html, body {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .stretch {
   height: 100%;
   width: 100%;

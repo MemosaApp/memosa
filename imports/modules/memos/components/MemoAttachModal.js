@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import { IonModal } from 'reactionic';
 import Dropzone from 'react-dropzone';
+
+import Error from '/imports/modules/app/components/Error';
 
 const { func } = PropTypes;
 
@@ -11,11 +12,39 @@ class MemoAttachModal extends Component {
     onClose: func,
   }
 
-  handleDrop = (acceptedFile, rejectedFiles) => {
-    // TODO
+  state = {
+    error: null,
+    processing: false,
+  }
+
+  handleDrop = (acceptedFiles, rejectedFiles) => {
+    if (rejectedFiles !== null && rejectedFiles.length > 0) {
+      this.setState({
+        error: {
+          files: 'Some of your files could not be uploaded!',
+        }
+      });
+      return;
+    }
+
+    this.setState({
+      error: null,
+      processing: true,
+    });
+
+    this.props.onAttachFile(acceptedFiles, this.handleError.bind(this));
+  }
+
+  handleError = (message) => {
+    this.setState({
+      error: {
+        files: message,
+      }
+    });
   }
 
   render() {
+    const { error, processing } = this.state;
     const { onClose } = this.props;
 
     return (
@@ -35,14 +64,14 @@ class MemoAttachModal extends Component {
                   <div className="memo-attach">
                     <div className="memo-attach__entities">
                       <div className="input-group">
-                        <label htmlFor="memo-attach-filter">
-                          Add a file you have perviously uploaded
-                        </label>
                         <input
                           id="memo-attach-filter"
                           placeholder="Filter…"
                           type="text"
                         />
+                        <label htmlFor="memo-attach-filter">
+                          Add a file you have perviously uploaded
+                        </label>
                       </div>
 
                       <div className="memo-attach__filter-results">
@@ -54,9 +83,28 @@ class MemoAttachModal extends Component {
                       <p>or</p>
 
                       <div className="memo-attach__file">
-                        <Dropzone
-                          onDrop={this.handleDrop}
-                        />
+                        {
+                          error && error.files ?
+                          <Error>{error.files}</Error> :
+                          null
+                        }
+                        {
+                          processing ?
+                          <button
+                            className="button button-primary button-disabled"
+                            disabled
+                          >
+                            Uploading…
+                          </button> :
+                          <Dropzone
+                            className="memo-attach__dropzone button button-primary"
+                            disablePreview
+                            onDrop={this.handleDrop}
+                          >
+                            <div>Upload a file…</div>
+                          </Dropzone>
+                        }
+
                       </div>
                     </footer>
                   </div>

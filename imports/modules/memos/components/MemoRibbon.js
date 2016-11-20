@@ -12,6 +12,7 @@ class MemoRibbon extends Component {
   handleAttach = (event) => {
     event.preventDefault();
 
+    this.refs.attach.blur();
     this.setState({ showAttach: true });
   }
 
@@ -19,6 +20,12 @@ class MemoRibbon extends Component {
     event.preventDefault();
 
     this.setState({ showAttach: false });
+  }
+
+  handleAttachFile = (acceptedFiles, onError) => {
+    // TODO
+
+    onError('Something bad happened');
   }
 
   handleCamera = (event) => {
@@ -56,7 +63,10 @@ class MemoRibbon extends Component {
       <div className="memo-ribbon">
         <ul>
           <li>
-            <button onClick={this.handleAttach}>
+            <button
+              onClick={this.handleAttach}
+              ref="attach"
+            >
               <Icon
                 defaultIcon="ion-android-attach"
                 iosIcon="ion-paperclip"
@@ -115,7 +125,7 @@ class MemoRibbon extends Component {
         >
           <MemoAttachModal
             onAttachEntity={() => {}}
-            onAttachFile={() => {}}
+            onAttachFile={this.handleAttachFile}
             onClose={this.handleCloseAttach}
           />
         </Modal>
