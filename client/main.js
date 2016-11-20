@@ -7,6 +7,7 @@ import ReactDOM, { render } from 'react-dom';
 
 import a11y from 'react-a11y';
 
+import '/imports/startup';
 import routes from '/imports/routes';
 
 import '/imports/modules/auth/startup/config';

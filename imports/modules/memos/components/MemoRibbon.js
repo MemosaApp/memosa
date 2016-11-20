@@ -1,32 +1,24 @@
 import React, { Component, PropTypes } from 'react';
 
-import MemoAttachModal from './MemoAttachModal';
+import Modal from '/imports/Modals';
 import Icon from '/imports/Icons';
-
-const { func } = PropTypes;
+import MemoAttachModal from './MemoAttachModal';
 
 class MemoRibbon extends Component {
-  static propTypes = {
-
-  }
-
-  static contextTypes = {
-    ionShowModal: func,
+  state = {
+    showAttach: false,
   }
 
   handleAttach = (event) => {
-    const { ionShowModal } = this.context;
-
     event.preventDefault();
 
-    // XXX open the file modal
-    const memoAttachModal = (
-      <MemoAttachModal
-        onAttachEntity={() => {}}
-        onAttachFile={() => {}}
-      />
-    );
-    ionShowModal(memoAttachModal);
+    this.setState({ showAttach: true });
+  }
+
+  handleCloseAttach = (event) => {
+    event.preventDefault();
+
+    this.setState({ showAttach: false });
   }
 
   handleCamera = (event) => {
@@ -116,6 +108,17 @@ class MemoRibbon extends Component {
           </li>
 
         </ul>
+
+        <Modal
+          isOpen={this.state.showAttach}
+          onRequestClose={this.handleCloseAttach}
+        >
+          <MemoAttachModal
+            onAttachEntity={() => {}}
+            onAttachFile={() => {}}
+            onClose={this.handleCloseAttach}
+          />
+        </Modal>
       </div>
     );
   }
