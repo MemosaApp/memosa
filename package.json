@@ -11,7 +11,8 @@
     "test:meteor": "meteor test --once --driver-package dispatch:mocha-phantomjs --port 9999",
     "watch:integration": "chimp --ddp=http://localhost:3000 --watch --mocha --path=tests",
     "test:integration": "chimp --ddp=http://localhost:3000 --mocha --path=tests --browser=phantomjs",
-    "postinstall": "./.scripts/postinstall.sh"
+    "postinstall": "./.scripts/postinstall.sh",
+    "docs": "node .scripts/generateDocumentation.js"
   },
   "dependencies": {
     "aws-lib": "^0.3.0",
@@ -59,6 +60,8 @@
     "eslint-plugin-promise": "^2.0.1",
     "eslint-plugin-react": "^6.7.1",
     "eslint-plugin-sort-class-members": "^1.1.1",
+    "jsdoc": "^3.4.3",
+    "jsdoc-babel": "^0.2.1",
     "jsdoc-to-markdown": "^2.0.1",
     "jsdom": "^9.8.3",
     "meteor-node-stubs": "^0.2.4",

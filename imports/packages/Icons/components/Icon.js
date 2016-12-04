@@ -16,14 +16,17 @@ const { bool, object, shape, string } = PropTypes;
  *
  * Usage:
  *
- * ```
+ * ```jsx
  * <Icon
  *   defaultIcon="fa fa-icon"
- *   [hidden={true}]
- *   [icons={{ android: 'fa fa-android', ios: 'fa fa-ios', web: 'fa fa-web }}]
- *   [label="Icon"]
+ *   icons={{ android: 'fa fa-android', ios: 'fa fa-ios', web: 'fa fa-web }}
  * />
  * ```
+ *
+ * @param {string} defaultIcon - Required. The default icon.
+ * @param {object} icons - Optional. Specific icons to use depending on the device
+ * @param {boolean} hidden - Optional. Defaults to true. Whether the icon is hidden for screen readers
+ * @param {string} label - Optional. Screen reader text.
  */
 export default class Icon extends Component {
   static propTypes = {

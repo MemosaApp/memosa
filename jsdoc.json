@@ -1,0 +1,18 @@
+{
+    "plugins": ["node_modules/jsdoc-babel"],
+    "babel": {
+      "presets": [
+        "memosa"
+      ],
+      "env": {
+        "test": {
+          "plugins": [
+            ["babel-root-import", {
+              "rootPathPrefix": "/",
+              "rootPathSuffix": "./"
+            }]
+          ]
+        }
+      }
+    }
+}
