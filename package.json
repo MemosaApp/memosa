@@ -12,7 +12,7 @@
     "watch:integration": "chimp --ddp=http://localhost:3000 --watch --mocha --path=tests",
     "test:integration": "chimp --ddp=http://localhost:3000 --mocha --path=tests --browser=phantomjs",
     "postinstall": "./.scripts/postinstall.sh",
-    "docs": "node .scripts/generateDocumentation.js"
+    "docs": "jsdoc:perFile imports/**/*.js -i *.text.js -c jsdoc.json"
   },
   "dependencies": {
     "aws-lib": "^0.3.0",
@@ -62,6 +62,7 @@
     "eslint-plugin-sort-class-members": "^1.1.1",
     "jsdoc": "^3.4.3",
     "jsdoc-babel": "^0.2.1",
+    "jsdoc-memosa": "^1.0.0",
     "jsdoc-to-markdown": "^2.0.1",
     "jsdom": "^9.8.3",
     "meteor-node-stubs": "^0.2.4",

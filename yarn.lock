@@ -3395,6 +3395,12 @@ jsdoc-babel:
   dependencies:
     lodash "^4.13.1"
 
+jsdoc-memosa:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/jsdoc-memosa/-/jsdoc-memosa-1.0.0.tgz#c9be0fd2e517edebabc5a2a9b76bc2955cffbe7f"
+  dependencies:
+    commander "^2.9.0"
+
 jsdoc-parse@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/jsdoc-parse/-/jsdoc-parse-2.0.5.tgz#6d4163e8693f6054ab41dd4cfc643260958f1477"
