@@ -1,7 +1,7 @@
 import React from 'react';
 import { IndexRoute, Route } from 'react-router';
 
-import { MEMO_ROUTE, MEMO_CREATE_ROUTE } from '../constants'
+import { MEMO_ROUTE, MEMO_CREATE_ROUTE } from '../constants';
 import Form from '../components/Form';
 import View from '../components/View';
 

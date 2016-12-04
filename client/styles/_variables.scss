@@ -1,21 +1,25 @@
-$app-memosa: #FFC46B;
+$app-memosa: #FFDD6B;
+$app-memosa-dark: #4a4943;
+$app-memosa-light: #faf8f3;
+
 $app-balanced: #1F8A70;
 $app-energized: #FF6B28;
-$app-jet: #D62828;
-$app-positive: #004358;
+$app-jet: #E85551;
+$app-positive: #4D79A6;
+$app-royal: #7E50AC;
 
 // Colors
 // -------------------------------
 
-$light:                           #fff;
+$light:                           $app-memosa-light;
 $stable:                          $app-memosa;
 $positive:                        $app-positive;
 $calm:                            #11c1f3;
 $balanced:                        $app-balanced;
 $energized:                       $app-energized;
 $assertive:                       $app-jet;
-$royal:                           #886aea;
-$dark:                            #333;
+$royal:                           $app-royal;
+$dark:                            $app-memosa-dark;
 
 
 // Base

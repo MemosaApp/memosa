@@ -15,7 +15,7 @@ export default class Fab extends Component {
   handleToggle = () => {
     this.setState({
       active: !this.state.active,
-    })
+    });
   }
 
   render() {

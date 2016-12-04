@@ -9,9 +9,9 @@ import Layout from '/imports/modules/navigation/components/Layout';
 import App from '/imports/modules/app/components/App';
 import activitiesRoutes from '/imports/modules/activities/routes';
 import memosRoutes from '/imports/modules/memos/routes';
-import reducers from '/imports/reducers';
+import reducers from './reducers';
 
-const middleware = routerMiddleware(browserHistory)
+const middleware = routerMiddleware(browserHistory);
 const store = createStore(reducers, applyMiddleware(middleware));
 
 const history = syncHistoryWithStore(browserHistory, store);
@@ -28,4 +28,4 @@ export default (
       </Route>
     </Router>
   </Provider>
-)
+);

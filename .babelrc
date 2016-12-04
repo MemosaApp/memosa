@@ -1,11 +1,15 @@
 {
   "presets": [
-    "es2015",
-    "react",
-    "stage-2"
+    "memosa"
   ],
-  "plugins": [
-    "transform-decorators-legacy",
-    "transform-class-properties"
-  ]
+  "env": {
+    "test": {
+      "plugins": [
+        ["babel-root-import", {
+          "rootPathPrefix": "/",
+          "rootPathSuffix": "./"
+        }]
+      ]
+    }
+  }
 }

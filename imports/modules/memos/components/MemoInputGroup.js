@@ -2,7 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { Editor, EditorState, ContentState, convertToRaw, convertFromRaw } from 'draft-js';
 import classnames from 'classnames';
 
-import MemoRibbon from './MemoRibbon';
+// TODO make this injectable for testing
+import MemoRibbon from '../containers/MemoRibbon';
 
 const { func, object } = PropTypes;
 
@@ -12,11 +13,11 @@ const parseMemo = (s = null) => {
   } else {
     return ContentState.createFromBlockArray(convertFromRaw(JSON.parse(s)));
   }
-}
+};
 
 const objectifyMemo = (editorState) => {
   return JSON.stringify(convertToRaw(editorState.getCurrentContent()));
-}
+};
 
 export default class MemoInputGroup extends Component {
   static propTypes = {
@@ -33,15 +34,14 @@ export default class MemoInputGroup extends Component {
 
     this.state = {
       editorState: EditorState.createWithContent(parseMemo(props.defaultValue)),
-    }
+    };
   }
 
   handleChange = (editorState) => {
     const { onChange } = this.props;
 
-    // XXX scroll to bottom if the height of the container changes
+    // TODO scroll to bottom if the height of the container changes
     // I think we need to bubble up that the cursor is at the end too
-
 
     this.setState({
       editorState,
@@ -63,7 +63,7 @@ export default class MemoInputGroup extends Component {
       {
         'memo-input-group--hide-placeholder': editorState.getCurrentContent().hasText(),
       }
-    )
+    );
 
     return (
       <div className={className}>
@@ -73,9 +73,7 @@ export default class MemoInputGroup extends Component {
           placeholder="Type your memo"
           spellCheck
         />
-        <MemoRibbon
-
-        />
+        <MemoRibbon />
       </div>
     );
   }

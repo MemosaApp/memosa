@@ -7,14 +7,15 @@ const { func } = PropTypes;
 
 class MemoAttachModal extends Component {
   static propTypes = {
-    onAttachEntity: func,
-    onAttachFile: func,
+    // onAttachEntity: func,
     onClose: func,
+    onUpload: func,
   }
 
   state = {
     error: null,
     processing: false,
+    uploads: [],
   }
 
   handleDrop = (acceptedFiles, rejectedFiles) => {
@@ -22,7 +23,7 @@ class MemoAttachModal extends Component {
       this.setState({
         error: {
           files: 'Some of your files could not be uploaded!',
-        }
+        },
       });
       return;
     }
@@ -32,14 +33,32 @@ class MemoAttachModal extends Component {
       processing: true,
     });
 
-    this.props.onAttachFile(acceptedFiles, this.handleError.bind(this));
+    this.props.onUpload(acceptedFiles).forEach(handler => {
+      const that = this;
+      // Use function to let handler bind
+      handler.on('start', function start() {
+        that.setState({
+          uploads: [this, ...that.state.uploads],
+        });
+      });
+
+      // Use function to let handler bind
+      handler.on('end', function end(/* error, fileObj */) {
+        // TODO
+        this;
+      });
+
+      handler.start();
+    });
+
+    // TODO call back with the entities
   }
 
   handleError = (message) => {
     this.setState({
       error: {
         files: message,
-      }
+      },
     });
   }
 
@@ -55,7 +74,7 @@ class MemoAttachModal extends Component {
               <div className="bar bar-header bar--modal">
                 <h2 className="title" id="a11y-155">Attach a file</h2>
                 <button className="button button-icon" onClick={onClose}>
-                  <i className="icon ion-ios-close-empty"></i>
+                  <i className="icon ion-ios-close-empty" />
                 </button>
               </div>
               <div className="content has-header overflow-scroll">
@@ -85,24 +104,24 @@ class MemoAttachModal extends Component {
                       <div className="memo-attach__file">
                         {
                           error && error.files ?
-                          <Error>{error.files}</Error> :
+                            <Error>{error.files}</Error> :
                           null
                         }
                         {
                           processing ?
-                          <button
-                            className="button button-primary button-disabled"
-                            disabled
-                          >
-                            Uploading…
-                          </button> :
-                          <Dropzone
-                            className="memo-attach__dropzone button button-primary"
-                            disablePreview
-                            onDrop={this.handleDrop}
-                          >
-                            <div>Upload a file…</div>
-                          </Dropzone>
+                            <button
+                              className="button button-primary button-disabled"
+                              disabled
+                            >
+                              Uploading…
+                            </button> :
+                            <Dropzone
+                              className="memo-attach__dropzone button button-primary"
+                              disablePreview
+                              onDrop={this.handleDrop}
+                            >
+                              <div>Upload a file…</div>
+                            </Dropzone>
                         }
 
                       </div>

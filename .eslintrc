@@ -1,109 +1,43 @@
 {
-  "parser": "babel-eslint",
+  "extends": [
+    "memosa",
+    "plugin:meteor/recommended"
+  ],
 
   "env": {
     "browser": true,
-    "node": true,
     "meteor": true,
+    "mocha": true,
+    "node": true
   },
 
   "parserOptions": {
-    "allowImportExportEverywhere": true,
-    "ecmaFeatures": {
-      "jsx": true
-    }
+    "allowImportExportEverywhere": true
   },
 
   "settings": {
-    "import/resolver": "meteor",
-    "react": {
-      "createClass": "createClass",
-      "pragma": "React",
-      "version": "15.0"
-    }
+    "import/resolver": "meteor"
   },
-
-  "extends": [
-    "eslint:recommended",
-    "plugin:meteor/recommended",
-    "plugin:react/recommended"
-  ],
 
   "plugins": [
     "chai-expect",
-    "jsx-a11y",
     "meteor",
-    "no-empty-blocks",
-    "no-use-extend-native",
-    "promise",
-    "react"
+    "promise"
   ],
 
   "rules": {
-    "arrow-body-style": [0, "never"],
-    "no-warning-comments": [2, { "terms": ["xxx"], "location": "start" } ],
-    "no-empty": 0,
+    "no-warning-comments": ["error", { "terms": ["xxx"], "location": "start" }],
 
     "chai-expect/missing-assertion": 2,
     "chai-expect/terminating-properties": 1,
-
-    "jsx-a11y/anchor-has-content": 2,
-    "jsx-a11y/aria-props": 2,
-    "jsx-a11y/aria-proptypes": 2,
-    "jsx-a11y/aria-role": 2,
-    "jsx-a11y/aria-unsupported-elements": 2,
-    "jsx-a11y/click-events-have-key-events": 2,
-    "jsx-a11y/heading-has-content": 2,
-    "jsx-a11y/href-no-hash": 2,
-    "jsx-a11y/html-has-lang": 2,
-    "jsx-a11y/img-has-alt": 2,
-    "jsx-a11y/img-redundant-alt": 2,
-    "jsx-a11y/label-has-for": 2,
-    "jsx-a11y/lang": 2,
-    "jsx-a11y/mouse-events-have-key-events": 2,
-    "jsx-a11y/no-access-key": 2,
-    "jsx-a11y/no-marquee": 2,
-    "jsx-a11y/no-onchange": 2,
-    "jsx-a11y/no-static-element-interactions": 2,
-    "jsx-a11y/onclick-has-focus": 2,
-    "jsx-a11y/onclick-has-role": 2,
-    "jsx-a11y/role-has-required-aria-props": 2,
-    "jsx-a11y/role-supports-aria-props": 2,
-    "jsx-a11y/scope": 2,
-    "jsx-a11y/tabindex-no-positive": 2,
-
-    "no-use-extend-native/no-use-extend-native": 2,
 
     "promise/param-names": 2,
     "promise/always-return": 2,
     "promise/catch-or-return": 2,
     "promise/no-native": 0,
 
-    "react/forbid-prop-types": 2,
-    "react/no-children-prop": 2,
-    "react/no-did-mount-set-state": 2,
-    "react/no-did-update-set-state": 2,
-    "react/no-direct-mutation-state": 2,
-    "react/no-find-dom-node": 2,
-    "react/no-is-mounted": 2,
-    "react/no-multi-comp": 2,
-    "react/no-unknown-property": 2,
-    "react/prefer-es6-class": 2,
-    "react/jsx-boolean-value": 2,
-    "react/jsx-closing-bracket-location": 2,
-    "react/jsx-curly-spacing": ["error", "never"],
-    "react/jsx-first-prop-new-line": 2,
-    "react/jsx-handler-names": 2,
-    "react/jsx-indent": 0, # this rule doesn't work correctly
-    "react/jsx-key": 2,
-    "react/jsx-no-bind": 2,
-    "react/jsx-no-duplicate-props": 2,
-    "react/jsx-pascal-case": 2,
-    "react/jsx-sort-props": 2,
-    "react/jsx-space-before-closing": 2,
-    "react/jsx-uses-react": 2,
-    "react/jsx-uses-vars": 2,
-    "react/jsx-wrap-multilines": 2,
 
-  },
+    # Meteor uses absolute paths
+    "import/no-absolute-path": "off"
+  }
 }

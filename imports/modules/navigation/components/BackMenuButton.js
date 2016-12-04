@@ -12,7 +12,7 @@ class BackMenuButton extends Component {
   }
 
   static defaultProps = {
-    beforeNavigation: (c) => { c(); }
+    beforeNavigation: (c) => { c(); },
   }
 
   static contextTypes = {

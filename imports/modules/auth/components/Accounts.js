@@ -17,7 +17,7 @@ export default class Accounts extends Component {
   setRef = (name) => {
     return (node) => {
       this[name] = node;
-    }
+    };
   }
 
   render() {

@@ -1,30 +1,30 @@
 /* global cordova:false */
-export const getPlatform = function(platformOverride) {
-  var isCordova = typeof Meteor !== 'undefined' && Meteor.isCordova;
-  var iOS = {
+export default (platformOverride) => {
+  const isCordova = typeof Meteor !== 'undefined' && Meteor.isCordova;
+  const iOS = {
     isIOS: true,
     isAndroid: false,
-    isCordova: isCordova,
+    isCordova,
     transitionTimeOut: 450,
-    name: 'iOS'
+    name: 'iOS',
   };
-  var android = {
+  const android = {
     isIOS: false,
     isAndroid: true,
-    isCordova: isCordova,
+    isCordova,
     transitionTimeOut: 320,
-    name: 'Android'
+    name: 'Android',
   };
 
   if (platformOverride === 'iOS') { return iOS; }
 
   if (typeof cordova !== 'undefined' && cordova.platformId === 'ios') { return iOS; }
 
-  if(!!navigator.userAgent.match(/iPad/i)
+  if (!!navigator.userAgent.match(/iPad/i)
      || !!navigator.userAgent.match(/iPhone/i)
      || !!navigator.userAgent.match(/iPod/i)
     ) {
-      return iOS;
+    return iOS;
   }
 
   if (platformOverride === 'Android') { return android; }
@@ -36,8 +36,8 @@ export const getPlatform = function(platformOverride) {
   return {
     isIOS: false,
     isAndroid: false,
-    isCordova: isCordova,
+    isCordova,
     transitionTimeOut: 450,
-    name: 'Web'
+    name: 'Web',
   };
 };

@@ -2,9 +2,16 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { expect } from 'chai';
 import sinon from 'sinon';
+
+import { Wrapper, context } from '/imports/packages/IonicMocks';
+
 import { ActivityFab } from './Fab';
 
 const { describe, it } = global;
+
+const options = {
+  context,
+};
 
 describe('Activity Fab', () => {
   it('renders FAB components', () => {
@@ -12,28 +19,34 @@ describe('Activity Fab', () => {
       <ActivityFab />
     );
 
-    expect(wrapper.contains('<Fab />')).to.be.equal(true);
+    expect(wrapper.find('Fab')).to.have.length(1);
   });
 
   it('navigates to the note create route', () => {
     const spy = sinon.spy();
     const wrapper = mount(
-      <ActivityFab
-        push={spy}
-      />
+      <Wrapper>
+        <ActivityFab
+          handlePush={spy}
+        />
+      </Wrapper>,
+      options
     );
 
     wrapper.find('.button-balanced').simulate('click');
 
-    expect(spy).to.have.been.calledWith('/notes/create');
+    expect(spy).to.have.been.calledWith('/memos/new');
   });
 
   it('navigates to the group create route', () => {
     const spy = sinon.spy();
     const wrapper = mount(
-      <ActivityFab
-        push={spy}
-      />
+      <Wrapper>
+        <ActivityFab
+          handlePush={spy}
+        />
+      </Wrapper>,
+      options
     );
 
     wrapper.find('.button-royal').simulate('click');

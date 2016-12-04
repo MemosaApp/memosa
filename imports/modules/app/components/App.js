@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { IonBody } from 'reactionic';
-import { getPlatform } from '../utilities/helpers';
+import getPlatform from '../utilities/getPlatform';
 
 const { node, object } = PropTypes;
 

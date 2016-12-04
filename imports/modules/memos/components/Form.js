@@ -29,7 +29,7 @@ class MemosForm extends Component {
   }
 
   componentDidMount() {
-    this.refs.title.focus();
+    this._title.focus();
   }
 
   promptIfDirty = (callback) => {
@@ -44,9 +44,9 @@ class MemosForm extends Component {
         cancelType: 'button-danger',
         okText: 'Leave',
         onOk: () => {
-           callback();
-         },
-         onCancel: () => {}
+          callback();
+        },
+        onCancel: () => {},
       });
     } else {
       callback();
@@ -78,11 +78,11 @@ class MemosForm extends Component {
               error: {
                 ...this.state.error,
                 title: `Your title must be less than ${TITLE_LENGTH} characters.`,
-              }
+              },
             });
           }
-        }
-      ]
+        },
+      ],
     };
 
     if (element) {
@@ -106,13 +106,13 @@ class MemosForm extends Component {
             aria-label="Enter a memo title"
             onChange={this.handleTitleChange}
             placeholder={placeholder}
-            ref="title"
+            ref={(ref) => { this._title = ref; }}
             type="text"
             value={title}
           />
           {
             error && error.title ?
-            <Error>{error.title}</Error> :
+              <Error>{error.title}</Error> :
             null
           }
         </div>
@@ -129,6 +129,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     handleSetNavigation: (...args) => dispatch(setNavigation(...args)),
   };
-}
+};
 
 export default connect(null, mapDispatchToProps)(MemosForm);

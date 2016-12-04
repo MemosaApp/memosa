@@ -2,7 +2,7 @@
 /* eslint-disable func-names, prefer-arrow-callback */
 
 // These are Chimp globals
-/* globals browser assert server */
+/* globals browser assert */
 
 const countLists = () => {
   browser.waitForExist('.tasks');

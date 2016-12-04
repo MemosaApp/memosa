@@ -6,27 +6,27 @@ const { bool, node } = PropTypes;
 
 class IsLoggedIn extends Component {
   static propTypes = {
+    Indeterminate: node,
     loggedIn: bool,
     LoggedIn: node.isRequired,
     NotLoggedIn: node.isRequired,
-    Indeterminate: node,
   }
 
   static defautlProps = {
     loggedIn: false,
-    Indeterminate: <div></div>,
+    Indeterminate: <div />,
   }
 
   render() {
     const { loggedIn, LoggedIn, NotLoggedIn, Indeterminate } = this.props;
 
-    switch(loggedIn) {
-      case true:
-        return LoggedIn;
-      case false:
-        return NotLoggedIn;
-      default:
-        return Indeterminate;
+    switch (loggedIn) {
+    case true:
+      return LoggedIn;
+    case false:
+      return NotLoggedIn;
+    default:
+      return Indeterminate;
     }
   }
 }

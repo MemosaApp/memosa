@@ -1,10 +1,16 @@
 import React, { Component, PropTypes } from 'react';
 
-import Modal from '/imports/Modals';
-import Icon from '/imports/Icons';
+import Modal from '/imports/packages/Modals';
+import Icon from '/imports/packages/Icons';
 import MemoAttachModal from './MemoAttachModal';
 
+const { func } = PropTypes;
+
 class MemoRibbon extends Component {
+  static propTypes = {
+    handleUpload: func,
+  }
+
   state = {
     showAttach: false,
   }
@@ -12,7 +18,7 @@ class MemoRibbon extends Component {
   handleAttach = (event) => {
     event.preventDefault();
 
-    this.refs.attach.blur();
+    this._attach.blur();
     this.setState({ showAttach: true });
   }
 
@@ -22,50 +28,50 @@ class MemoRibbon extends Component {
     this.setState({ showAttach: false });
   }
 
-  handleAttachFile = (acceptedFiles, onError) => {
-    // TODO
-
-    onError('Something bad happened');
+  handleAttachEntity = (/* entityId */) => {
+    // TODO add the entity to the memo
   }
 
   handleCamera = (event) => {
     event.preventDefault();
 
-    // XXX
+    // TODO
   }
 
   handleTags = (event) => {
     event.preventDefault();
 
-    // XXX
+    // TODO
   }
 
   handleDraw = (event) => {
     event.preventDefault();
 
-    // XXX
+    // TODO
   }
 
   handleSharing = (event) => {
     event.preventDefault();
 
-    // XXX
+    // TODO
   }
 
   handleAudio = (event) => {
     event.preventDefault();
 
-    // XXX
+    // TODO
   }
 
   render() {
+    const { handleUpload } = this.props;
+
     return (
       <div className="memo-ribbon">
         <ul>
           <li>
             <button
               onClick={this.handleAttach}
-              ref="attach"
+              ref={(ref) => { this._attach = ref; }}
             >
               <Icon
                 defaultIcon="ion-android-attach"
@@ -124,9 +130,9 @@ class MemoRibbon extends Component {
           onRequestClose={this.handleCloseAttach}
         >
           <MemoAttachModal
-            onAttachEntity={() => {}}
-            onAttachFile={this.handleAttachFile}
+            onAttachEntity={this.handleAttachEntity}
             onClose={this.handleCloseAttach}
+            onUpload={handleUpload}
           />
         </Modal>
       </div>

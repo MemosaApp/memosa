@@ -37,6 +37,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     handleSetNavigation: (...args) => dispatch(setNavigation(...args)),
   };
-}
+};
 
 export default connect(null, mapDispatchToProps)(ActivityView);

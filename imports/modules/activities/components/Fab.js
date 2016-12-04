@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import Fab, { FabButton, FabActions, FabAction } from '/imports/Fab';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import Icon from '/imports/Icons';
+
+import Fab, { FabButton, FabActions, FabAction } from '/imports/packages/Fab';
+import Icon from '/imports/packages/Icons';
 
 import { MEMO_ROUTE, MEMO_CREATE_ROUTE } from '/imports/modules/memos/constants';
 import { GROUP_CREATE_ROUTE } from '/imports/modules/groups/constants';
@@ -18,7 +19,7 @@ class ActivityFab extends Component {
     event && event.preventDefault();
 
     this.props.handlePush(
-      [MEMO_ROUTE, MEMO_CREATE_ROUTE].join('/')
+      `/${[MEMO_ROUTE, MEMO_CREATE_ROUTE].join('/')}`,
     );
   }
 
@@ -37,7 +38,7 @@ class ActivityFab extends Component {
             defaultIcon="ion-android-add"
             iosIcon="ion-ios-plus-empty"
           />
-          <i className=""></i>
+          <i className="" />
         </FabButton>
         <FabActions>
           <FabAction

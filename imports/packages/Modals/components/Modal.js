@@ -53,7 +53,7 @@ export default class ModalWrapper extends Component {
             React.Children.map(children, (element, index) => {
               return React.cloneElement(element, {
                 key: index,
-              })
+              });
             }) :
             []
           }

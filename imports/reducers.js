@@ -8,4 +8,4 @@ export default combineReducers(
     navigation: navigationReducer,
     routing: routerReducer,
   }
-)
+);

@@ -35,7 +35,7 @@ class Layout extends Component {
         ionSnapper.settings({
           disable: 'right',
           touchToDrag: false,
-          hyperextensible: false
+          hyperextensible: false,
         });
         ionSnapper.on('open', () => {
           window.document.body.className += ' menu-open';
@@ -71,9 +71,9 @@ class Layout extends Component {
       <IonSideMenuContainer>
         {
           SideMenuComponents ?
-          <IonSideMenus>
-            {SideMenuComponents}
-          </IonSideMenus> :
+            <IonSideMenus>
+              {SideMenuComponents}
+            </IonSideMenus> :
           null
         }
         <IonSideMenuContent>

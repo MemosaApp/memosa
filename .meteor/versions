@@ -16,6 +16,7 @@ boilerplate-generator@1.0.11
 caching-compiler@1.1.9
 caching-html-compiler@1.0.7
 callback-hook@1.0.10
+capsulecat:glob-scss@0.0.1
 check@1.2.4
 coffeescript@1.11.1_4
 ddp@1.2.5
@@ -62,6 +63,8 @@ oauth@1.1.12
 oauth2@1.1.11
 observe-sequence@1.0.14
 ordered-dict@1.0.9
+ostrio:cookies@2.0.5
+ostrio:files@1.7.5
 practicalmeteor:chai@2.1.0_1
 practicalmeteor:loglevel@1.2.0_2
 practicalmeteor:mocha@2.4.5_6

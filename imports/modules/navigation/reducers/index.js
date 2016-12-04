@@ -8,8 +8,8 @@ export default (state = {
     return {
       ...state,
       options: action.options,
-    }
+    };
   default:
     return state;
   }
-}
+};
