@@ -3,7 +3,7 @@ import { shallow, mount } from 'enzyme';
 import { expect } from 'chai';
 import sinon from 'sinon';
 
-import { Wrapper, context } from '/imports/packages/IonicMocks';
+import { Wrapper, context } from 'reactionic-mocks';
 
 import { ActivityFab } from './Fab';
 

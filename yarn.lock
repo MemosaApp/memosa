@@ -982,6 +982,13 @@ babel-runtime@^6.0.0, babel-runtime@^6.11.6, babel-runtime@^6.2.0, babel-runtime
     core-js "^2.4.0"
     regenerator-runtime "^0.9.5"
 
+babel-runtime@^6.18.0:
+  version "6.20.0"
+  resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.20.0.tgz#87300bdcf4cd770f09bf0048c64204e17806d16f"
+  dependencies:
+    core-js "^2.4.0"
+    regenerator-runtime "^0.10.0"
+
 babel-runtime@6.11.6:
   version "6.11.6"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.11.6.tgz#6db707fef2d49c49bfa3cb64efdb436b518b8222"
@@ -4537,6 +4544,10 @@ react@^15.0.1, react@^15.4.0, react@>=0.12.0:
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
 
+reactionic-mocks:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/reactionic-mocks/-/reactionic-mocks-1.0.0.tgz#e685a0a663d795cad43818ce79f1c1257f44716b"
+
 reactionic@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/reactionic/-/reactionic-1.1.2.tgz#a543f701fbb66eb2e5220adbc1929b099923bf6d"
@@ -4652,6 +4663,10 @@ redux@^3.6.0:
 regenerate@^1.2.1:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.3.2.tgz#d1941c67bad437e1be76433add5b385f95b19260"
+
+regenerator-runtime@^0.10.0:
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.10.1.tgz#257f41961ce44558b18f7814af48c17559f9faeb"
 
 regenerator-runtime@^0.9.5:
   version "0.9.6"

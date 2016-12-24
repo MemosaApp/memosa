@@ -2,7 +2,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { mount } from 'enzyme';
 
-import { context, Wrapper } from '/imports/packages/IonicMocks';
+import { context, Wrapper } from 'reactionic-mocks';
 
 import Icon from './Icon';
 

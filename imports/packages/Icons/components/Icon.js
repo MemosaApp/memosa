@@ -5,7 +5,7 @@ const { bool, object, shape, string } = PropTypes;
 /**
  * The <Icon /> Component allows you to quickly create
  * accessible icons that also have different icons
- * depending on the platorm given by the ionPlatform
+ * depending on the platform given by the ionPlatform
  * context.
  *
  * By default, all icons are hidden. You must provide

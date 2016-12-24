@@ -7,22 +7,22 @@ Package.describe({
 Package.onUse((api) => {
   console.log('using');
   api.use('fourseven:scss');
+  //
+  // const path = Npm.require('path');
+  // const glob = Npm.require('glob');
+  //
+  // const options = {
+  //   cwd: path.join(path.resolve('.')),
+  // };
+  //
+  // console.log(options);
 
-  const path = Npm.require('path');
-  const glob = Npm.require('glob');
-
-  const options = {
-    cwd: path.join(path.resolve('.')),
-  };
-
-  console.log(options);
-
-  let files = glob.sync('imports/**/*.scss', options);
-
-  files = files.map(f => path.join(path.resolve('.'), f));
-
-  console.log(files);
-  api.addFiles([
-    '../../imports/packages/Fab/components/_Fab.scss',
-  ], ['client'], { isImport: true });
+  // let files = glob.sync('imports/**/*.scss', options);
+  //
+  // files = files.map(f => path.join(path.resolve('.'), f));
+  //
+  // console.log(files);
+  // api.addFiles([
+  //   '../../imports/packages/Fab/components/_Fab.scss',
+  // ], ['client'], { isImport: true });
 });

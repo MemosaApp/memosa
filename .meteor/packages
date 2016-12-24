@@ -28,4 +28,4 @@ service-configuration@1.0.11
 reywood:publish-composite
 fourseven:scss
 ostrio:files
-capsulecat:glob-scss
+# capsulecat:glob-scss
