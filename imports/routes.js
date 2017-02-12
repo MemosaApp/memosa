@@ -1,14 +1,13 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { Router, Route, browserHistory } from 'react-router';
+import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 
-import Layout from '/imports/modules/navigation/components/Layout';
+import track from '/imports/analytics';
+import appRoutes from '/imports/app/routes';
+import ContextProvider from '/imports/app/components/ContextProvider';
 
-import App from '/imports/modules/app/components/App';
-import activitiesRoutes from '/imports/modules/activities/routes';
-import memosRoutes from '/imports/modules/memos/routes';
 import reducers from './reducers';
 
 const middleware = routerMiddleware(browserHistory);
@@ -16,16 +15,16 @@ const store = createStore(reducers, applyMiddleware(middleware));
 
 const history = syncHistoryWithStore(browserHistory, store);
 
+history.listen(location => track({
+  pathname: location.pathname,
+}));
 
 export default (
   <Provider store={store}>
-    <Router history={history}>
-      <Route component={App} path="/">
-        <Route component={Layout}>
-          {activitiesRoutes}
-          {memosRoutes}
-        </Route>
-      </Route>
-    </Router>
+    <ContextProvider>
+      <Router history={history}>
+        {appRoutes}
+      </Router>
+    </ContextProvider>
   </Provider>
 );

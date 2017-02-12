@@ -1,0 +1,252 @@
+/**
+ * THIS FILE IS AUTO-GENERATED
+ *
+ * ANY CHANGE YOU MAKE TO THIS WILL BE OVERWRITTEN
+ */
+
+$background-color: #1B101F;
+$loader-color: #FE665C;
+
+$loader-size: em(32);
+$loader-animation-duration: 1.15s;
+
+
+.circular-loading,
+.circular-loading__figure {
+  @include position(absolute, 50% null null 50%);
+  @include transform(translate(-50%, -50%));
+}
+
+.circular-loading {
+  @include size($loader-size 0);
+  overflow: visible;
+  padding-top: $loader-size;
+}
+
+.circular-loading__figure {
+  @include size(0);
+  box-sizing: border-box;
+  border: 0 solid $loader-color;
+  border-radius: 50%;
+  @include animation(loader-figure $loader-animation-duration infinite $ease-out-cubic);
+}
+
+.circular-loading__label {
+  float: left;
+  margin-left: 50%;
+  @include transform(translateX(-50%));
+  margin: 0.5em 0 0 50%;
+
+  font-size: em(14);
+  letter-spacing: 0.1em;
+  line-height: 1.5em;
+  color: mix($loader-color, $background-color);
+  white-space: nowrap;
+  @include animation(loader-label $loader-animation-duration infinite $ease-out-cubic);
+}
+
+
+@include keyframes(loader-figure) {
+  0% {
+    @include size(0);
+  }
+
+  30% {
+    @include size($loader-size);
+    border-width: $loader-size / 2;
+    opacity: 1;
+  }
+
+  100% {
+    @include size($loader-size);
+    border-width: 0;
+    opacity: 0;
+  }
+}
+
+@include keyframes(loader-label) {
+  0% {
+    opacity: 0.35;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.35;
+  }
+}
+.login-form__group {
+  @include form-group;
+
+  label {
+    @include label;
+  }
+}
+.login-register-view {
+  background: white;
+  padding: 40px;
+  max-width: 600px;
+  margin: 40px auto;
+  border-radius: 4px;
+}
+
+.login-register-view__tab-group {
+  @include tab-group;
+}
+
+.login-register-view__tab {
+  @include tab;
+}
+
+.login-register-view__tab--active {
+  @include tab-active;
+}
+
+.login-register__tab-content {
+  
+}
+.memo-attach__dropzone {
+
+}
+.memo-input-group {
+  margin-bottom: 34px;
+  position: relative;
+
+  .DraftEditor-root {
+    font-family: $font-family-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 1.58;
+    letter-spacing: -.003em;
+  }
+
+  .DraftEditor-editor {
+    border-top: 1px solid #ddd;
+    cursor: text;
+    font-size: 18px;
+    margin-top: 10px;
+  }
+
+  .DraftEditor-editor .public-DraftEditorPlaceholder-root,
+  .DraftEditor-editor .public-DraftEditor-content {
+    margin: 0 -15px -15px;
+    padding: 15px;
+  }
+
+  .public-DraftEditorPlaceholder-root {
+    color: $input-color-placeholder;
+    position: absolute;
+    z-index: 99;
+  }
+
+  .DraftEditor-editorContainer {
+    position: relative;
+    z-index: 100;
+  }
+
+  .public-DraftEditor-content {
+    min-height: 100px;
+    z-index: 100;
+  }
+
+  .public-DraftStyleDefault-block {
+    margin-bottom: 38px;
+  }
+}
+
+.memo-input-group--hide-placeholder .public-DraftEditorPlaceholder-root {
+  display: none;
+}
+.memo-ribbon {
+  background-color: #fff;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+
+  ul {
+    border-top: 1px solid #ccc;
+    display: flex;
+    flex-direction: row;
+  }
+
+  li {
+    display: flex;
+    flex: 1;
+  }
+
+  li + li {
+    border-left: 1px solid #ccc;
+  }
+
+  button {
+    background-color: transparent;
+    color: $dark;
+    border: 0;
+    display: flex;
+    flex: 1;
+    @include rem(font-size, 16px);
+    text-align: center;
+
+    transition: all 0.2s ease; // TODO use a variable
+    transition-property: background-color;
+
+    &:hover {
+      background-color: lighten($app-memosa, 15);
+    }
+
+    &:active,
+    &:focus {
+      background-color: lighten($app-memosa, 10);
+    }
+  }
+
+  i {
+    @include rem(font-size, 20px);
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+.view-form-layout__button {
+  margin-top: 10px;
+}
+.button--icon {
+  background-color: transparent;
+  height: auto;
+  min-height: 0;
+  width: auto;
+
+  > * {
+    transform: scale(1);
+    transition: all .1s ease-in;
+    transition-property: scale translateY;
+
+    svg {
+      transition-property: filter;
+    }
+  }
+
+  &:hover {
+    > * {
+      transform: scale(1.1);
+
+      svg {
+        filter: drop-shadow(0px 2px 3px #aaa);
+      }
+    }
+  }
+
+  &:active {
+    > * {
+      transform: scale(1.1) translateY(1px);
+
+      svg {
+        filter: drop-shadow(0px 1px 2px #aaa);
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+@mixin tab-group {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+}
+
+@mixin tab($color: $app-memosa, $text-color: $app-memosa-light) {
+  background: rgba(160, 179, 176, 0.25);
+  border: none;
+  color: #a0b3b0;
+  cursor: pointer;
+  display: block;
+  float: left;
+  font-size: 20px;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  transition: .5s ease;
+  width: 50%;
+
+  &:first-child {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+
+  &:last-child {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+  }
+
+  &:hover {
+    background: lighten($color, 10%);
+    color: $app-memosa-light;
+  }
+}
+
+@mixin tab-active($color: $app-memosa, $text-color: $app-memosa-light) {
+  background: $color;
+  color: $text-color;
+}

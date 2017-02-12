@@ -1,0 +1,19 @@
+$navigation-tall-height: 75px;
+
+.bar--tall {
+  height: $navigation-tall-height;
+
+  .title {
+    height: $navigation-tall-height;
+  }
+}
+
+.bar--transparent {
+  background-color: transparent;
+  border-bottom: transparent;
+  border-top: transparent;
+}
+
+.content--bar-tall {
+  top: $navigation-tall-height;
+}

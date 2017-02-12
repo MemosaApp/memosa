@@ -1,11 +1,13 @@
-$app-memosa: #FFDD6B;
-$app-memosa-dark: #4a4943;
-$app-memosa-light: #faf8f3;
+$app-memosa: #EFD469;
+$app-memosa-dark: #093145;
+$app-memosa-light: #FBFBFB;
 
-$app-balanced: #1F8A70;
-$app-energized: #FF6B28;
-$app-jet: #E85551;
-$app-positive: #4D79A6;
+$app-balanced: #52B548;
+$app-energized: #EFCB95;
+$app-jet: #F03941;
+$app-positive: #01A8A3;
+
+// XXX kill this color
 $app-royal: #7E50AC;
 
 // Colors
@@ -442,7 +444,7 @@ $input-color:                     #111;
 $input-border:                    $item-default-border;
 $input-border-width:              $item-border-width;
 $input-label-color:               $dark;
-$input-color-placeholder:         lighten($dark, 40%);
+$input-color-placeholder:         lighten($input-color, 40%);
 
 
 // Progress

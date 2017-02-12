@@ -26,18 +26,14 @@ html, body {
 // fourseven:scss has a horrible bug where it can't import multiple
 // scss files that have the same name
 @import 'app-mixins';
+@import 'bourbon/bourbon';
 
 @import 'components/input';
 @import 'components/menu';
 @import 'components/modal';
-
-@import 'components/memo-attach';
-@import 'components/memo-input-group';
-@import 'components/memo-ribbon';
-
 @import 'components/notes-form'; // XXX rename file and styles
 
+@import 'styleguide';
+@import '{}/node_modules/react-fab/dist/main.scss';
 
-//@import '{}/imports/**/*.scss';
-
-@import '{}/imports/packages/Fab/components/Fab';
+@import 'import';

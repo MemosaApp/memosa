@@ -23,9 +23,9 @@ practicalmeteor:mocha@2.4.5_6
 dispatch:mocha-phantomjs
 ddp-rate-limiter@1.0.6
 accounts-ui@1.1.9
-accounts-facebook@1.0.11
 service-configuration@1.0.11
 reywood:publish-composite
 fourseven:scss
 ostrio:files
-# capsulecat:glob-scss
+accounts-password
+aldeed:simple-schema

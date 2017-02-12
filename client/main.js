@@ -10,7 +10,7 @@ import a11y from 'react-a11y';
 import '/imports/startup';
 import routes from '/imports/routes';
 
-import '/imports/modules/auth/startup/config';
+import '/imports/auth/startup/config';
 
 Meteor.startup(() => {
   if (Meteor.isDevelopment) {

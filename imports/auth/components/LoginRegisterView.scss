@@ -1,0 +1,23 @@
+.login-register-view {
+  background: white;
+  padding: 40px;
+  max-width: 600px;
+  margin: 40px auto;
+  border-radius: 4px;
+}
+
+.login-register-view__tab-group {
+  @include tab-group;
+}
+
+.login-register-view__tab {
+  @include tab;
+}
+
+.login-register-view__tab--active {
+  @include tab-active;
+}
+
+.login-register__tab-content {
+  
+}
