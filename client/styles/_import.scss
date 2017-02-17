@@ -170,8 +170,10 @@
   display: flex;
   flex-wrap: wrap;
 }
-
-.notebooks-list__item-wrapper {
+.notebook-list-item-graphic__wrapper {
+  background-color: transparent;
+  border: 0;
+  text-align: left;
   width: 50%;
 }
 
@@ -179,7 +181,7 @@ $notebook-height: 230px;
 $notebook-width: 3.5 / 5 * $notebook-height;
 $notebook-ledger-height: $notebook-height / 2.1;
 
-.notebooks-list__item {
+.notebook-list-item-graphic {
   background-color: #c34244;
   border-radius: 0px 8px 8px 0px;
   box-shadow: 4px 3px 10px rgba(21, 21, 21, 0.3);
@@ -190,23 +192,22 @@ $notebook-ledger-height: $notebook-height / 2.1;
   position: relative;
   width: $notebook-width;
 
-  &:before {
-    content: ' ';
-    border: 1px solid #b43d3f;
-    position: absolute;
-    left: 5px;
-    top: 0;
-    bottom: 0;
-    z-index: 1;
-  }
-
   .notebook-list-item__created {
     font-size: 12px;
     color: darken($app-memosa-light, 60%);
   }
 }
 
-.notebooks-list__item-inner {
+.notebook-list-item-graphic__decoration {
+  border: 1px solid #b43d3f;
+  position: absolute;
+  left: 5px;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.notebook-list-item-graphic__inner {
   background-color: rgb(21, 21, 21);
   font-size: 16px;
   height: $notebook-ledger-height;
@@ -217,18 +218,19 @@ $notebook-ledger-height: $notebook-height / 2.1;
 }
 
 
-.notebooks-list__item-wrapper--default {
-  .notebooks-list__item {
+.notebook-list-item-graphic__wrapper--default {
+  .notebook-list-item-graphic {
     background-color: transparent;
     border: 2px solid white;
     box-shadow: none;
 
-    &:before {
-      border: 1px solid #eee;
-    }
   }
 
-  .notebooks-list__item-inner {
+  .notebook-list-item-graphic__decoration {
+    border: 1px solid #eee;
+  }
+
+  .notebook-list-item-graphic__inner {
     background-color: transparent;
   }
 }

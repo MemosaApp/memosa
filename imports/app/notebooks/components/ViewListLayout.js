@@ -1,14 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import { IonContent, IonNavView, IonView, IonNavBar, IonSideMenuContainer, IonSideMenuContent } from 'reactionic';
+import { IonContent, IonNavView, IonView, IonNavBar } from 'reactionic';
 
 import IconButton from '/imports/theme/buttons/IconButton';
 import MemoIcon from '/imports/theme/icons/MemoIcon';
 import { APP_NAME } from '/imports/app/main/constants';
-import {
-  NOTEBOOKS_ROUTE,
-} from '/imports/app/notebooks/constants';
 import FadeIn from '/imports/theme/animations/FadeIn';
 
 const { func, node, object, oneOfType, string } = PropTypes;
@@ -19,7 +16,6 @@ class ViewListLayout extends Component {
     handlePush: func.isRequired,
     leftButton: node,
     navBarClasses: oneOfType([object, string]),
-    onBeforeLeave: func,
     rightButton: node,
   }
 

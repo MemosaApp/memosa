@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import { IonContent, IonNavView, IonView, IonNavBar, IonSideMenuContainer, IonSideMenuContent } from 'reactionic';
+import { IonContent, IonNavView, IonView, IonNavBar } from 'reactionic';
 import classnames from 'classnames';
 
 import GooeyMenu from '/imports/theme/navs/GooeyMenu';
@@ -84,7 +84,7 @@ class ViewFormLayout extends Component {
             <div className="view-form-layout">
               <GooeyMenu>
                 <a href="#">
-                  <i className="fa fa-bar-chart"></i>
+                  +
                 </a>
                 <IconButton
                   className={buttonClassNames}
@@ -93,7 +93,7 @@ class ViewFormLayout extends Component {
                   <MemoIcon size={40} />
                 </IconButton>
                 <a href="#">
-                  <i className="fa fa-plus"></i>
+                  +
                 </a>
               </GooeyMenu>
             </div>

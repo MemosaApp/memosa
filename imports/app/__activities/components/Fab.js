@@ -4,8 +4,8 @@ import { push } from 'react-router-redux';
 import { Fab, FabButton, FabActions, FabAction } from 'react-fab';
 import Icon from 'reactionic-icons';
 
-import { MEMO_ROUTE, MEMO_CREATE_ROUTE } from '/imports/memos/constants';
-import { GROUP_CREATE_ROUTE } from '/imports/groups/constants';
+import { MEMO_ROUTE, MEMO_CREATE_ROUTE } from '/imports/app/memos/constants';
+import { GROUP_CREATE_ROUTE } from '/imports/app/groups/constants';
 
 const { func } = PropTypes;
 

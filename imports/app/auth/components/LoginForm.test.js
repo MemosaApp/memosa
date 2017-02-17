@@ -2,7 +2,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { mount, shallow } from 'enzyme';
 import sinon from 'sinon';
-import LoginForm from './LoginForm';
+import { LoginForm } from './LoginForm';
 
 describe('<LoginForm />', () => {
   it('has a email field', () => {

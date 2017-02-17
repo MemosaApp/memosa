@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import CircularLoading from '/imports/theme/loaders/CircularLoading';
 
 import connectNotebooks from '../hocs/Notebooks';
-import ListItem from './ListItem';
+import ListItemGraphic from './ListItemGraphic';
 
 const { arrayOf, bool, shape } = PropTypes;
 
@@ -25,25 +25,13 @@ class NotebookList extends Component {
     return (
       <div className="notebooks-list">
         {notebooks.map(notebook => (
-          // XXX Use the notebook's color
-          <div className="notebooks-list__item-wrapper">
-            <div className="notebooks-list__item">
-              <ListItem
-                key={notebook._id}
-                className="notebooks-list__item-inner"
-                notebook={notebook}
-              />
-            </div>
-          </div>
+          <ListItemGraphic key={notebook._id} notebook={notebook} />
         ))}
 
-        <div className="notebooks-list__item-wrapper notebooks-list__item-wrapper--default">
-          <div className="notebooks-list__item">
-            <div className="notebooks-list__item-inner">
-              +
-            </div>
-          </div>
-        </div>
+        {/* Default List Item Graphic */}
+        <ListItemGraphic>
+          +
+        </ListItemGraphic>
       </div>
     );
   }

@@ -53,7 +53,7 @@ export default class MemoInputGroup extends Component {
     if (onChange) {
       onChange({
         jsonContent: objectifyMemo(editorState),
-        // XXX This probably won't work with images
+        // TODO This probably won't work with images
         isEmpty: !editorState.getCurrentContent().hasText(),
       });
     }

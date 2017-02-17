@@ -1,0 +1,30 @@
+image: node:7.0.0
+
+rspec:
+  cache:
+    paths:
+      - "node_modules"
+      - "~/.npm"
+      - "~/.meteor"
+
+all_tests:
+  script:
+    - npm install
+    - npm run test
+#
+# dependencies:
+#   cache_directories:
+#
+#   override:
+#     # Cache Meteor
+#     - if [ -d ~/.meteor ]; then sudo ln -s ~/.meteor/meteor /usr/local/bin/meteor; fi
+#     - if [ ! -e $HOME/.meteor/meteor ]; then curl https://install.meteor.com | sh; fi
+#     - npm install -g chimpz
+#     - npm install -g selenium-standalone
+#     - npm install
+# test:
+#   override:
+#     - npm run dev:
+#         background: true
+#     - sleep 120
+#     - npm run test

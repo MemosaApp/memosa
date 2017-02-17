@@ -2,28 +2,26 @@ import React from 'react';
 import { expect } from 'chai';
 import { mount } from 'enzyme';
 import Bottle from 'bottlejs';
-import LoginRegisterView from './LoginRegisterView';
+import sinon from 'sinon';
+import { LoginRegisterView } from './LoginRegisterView';
 import { REGISTER_VIEW } from '../constants';
 
 describe('<LoginRegisterView />', () => {
   const bottle = new Bottle();
-  const Login = () => (<div>Login</div>);
-  const Register = () => (<div>Register</div>);
-
-  bottle.service('LoginForm', Login);
-  bottle.service('RegisterForm', Register);
+  const track = sinon.spy();
+  bottle.service('track', () => track);
 
   it('renders the Login component when logging in', () => {
     const wrapper = mount(
       <LoginRegisterView />,
       {
         context: {
-          containers: bottle,
+          container: bottle,
         },
       }
     );
 
-    expect(wrapper.text()).to.contain('Login');
+    expect(wrapper.text()).to.contain('Log In');
   });
 
   it('renders the Register component when registering', () => {
@@ -31,7 +29,7 @@ describe('<LoginRegisterView />', () => {
       <LoginRegisterView />,
       {
         context: {
-          containers: bottle,
+          container: bottle,
         },
       }
     );
@@ -40,7 +38,7 @@ describe('<LoginRegisterView />', () => {
       view: REGISTER_VIEW,
     });
 
-    expect(wrapper.text()).to.contain('Register');
+    expect(wrapper.text()).to.contain('Sign Up');
   });
 
   it('changes to the register form when clicking the sign up button', () => {
@@ -48,14 +46,14 @@ describe('<LoginRegisterView />', () => {
       <LoginRegisterView />,
       {
         context: {
-          containers: bottle,
+          container: bottle,
         },
       }
     );
 
     wrapper.find('button#signupSwitch').simulate('click');
 
-    expect(wrapper.text()).to.contain('Register');
+    expect(wrapper.text()).to.contain('Sign Up');
   });
 
   it('changes to the login form when clicking the login button', () => {
@@ -63,13 +61,21 @@ describe('<LoginRegisterView />', () => {
       <LoginRegisterView />,
       {
         context: {
-          containers: bottle,
+          container: bottle,
         },
       }
     );
 
     wrapper.find('button#loginSwitch').simulate('click');
 
-    expect(wrapper.text()).to.contain('Login');
+    expect(wrapper.text()).to.contain('Log In');
+  });
+
+  it.skip('calls track when login success', () => {
+
+  });
+
+  it.skip('calls track when register success', () => {
+
   });
 });

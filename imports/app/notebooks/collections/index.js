@@ -22,6 +22,22 @@ if (Meteor.isServer) {
   });
 }
 
+const generatePerfectColor = () => {
+  const seed = Math.random();
+
+  let hue = (seed * 360) % 360;
+  // reflect yellow colors
+  if (hue > 45 && hue < 67) {
+    hue = 360 - hue;
+  }
+
+  return {
+    hue,
+    saturation: 40,
+    lightness: 50,
+  };
+};
+
 Meteor.methods({
   'notebooks.insert'({ title }) {
     const { userId } = this;
@@ -34,7 +50,7 @@ Meteor.methods({
       title,
       ownerId: userId,
       created: new Date(),
-      // XXX give notebooks a random color
+      color: generatePerfectColor(),
     });
   },
 });

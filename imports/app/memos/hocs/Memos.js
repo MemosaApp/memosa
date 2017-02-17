@@ -11,10 +11,10 @@ const { arrayOf, bool, node, shape } = PropTypes;
 class Memos extends Component {
   static propTypes = {
     children: node,
-    memosReady: bool,
     memos: arrayOf(shape({
-
+      // TODO
     })),
+    memosReady: bool,
   }
 
   render() {

@@ -6,8 +6,9 @@ const track = (meta = {
   namespace: '',
   action: '',
 }) => {
-  // XXX
-  console.log(meta);
+  if (window.ga) {
+    window.ga('send', 'event', meta.namespace, meta.action, meta.location);
+  }
 };
 
 export default track;

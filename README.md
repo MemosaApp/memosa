@@ -1,32 +1,17 @@
 
-## Recommendation Engine
+Master Status
 
-The recommendation engine is self-contained and does not require you to install
-anything (for the rest of the app to function), however, you will need to install
-neo4j in order to use the recommendation engine.
+[![build status](https://gitlab.com/memosa/memosa/badges/master/build.svg)](https://gitlab.com/memosa/memosa/commits/master) [![coverage report](https://gitlab.com/memosa/memosa/badges/master/coverage.svg)](https://gitlab.com/memosa/memosa/commits/master)
+
+Develop Status
+
+[![build status](https://gitlab.com/memosa/memosa/badges/develop/build.svg)](https://gitlab.com/memosa/memosa/commits/develop) [![coverage report](https://gitlab.com/memosa/memosa/badges/develop/coverage.svg)](https://gitlab.com/memosa/memosa/commits/develop)
+
 
 ## Running tests
 
-```
-meteor npm run lint
-
-# Run all tests
-meteor npm run test
-
-# Run all module tests
-meteor npm run test:modules
-
-```
+XXX
 
 ## Feature tests
 
-1. Make sure `meteor` is running
-2. In another command line, run `meteor npm run chimp-tests` or `meteor npm run chimp-watch`.
-
-## Using Atom?
-
-```
-apm install language-babel
-apm install linter
-apm install linter-eslint
-```
+XXX

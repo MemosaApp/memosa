@@ -61,3 +61,7 @@ function storageMock() {
 global.localStorage = storageMock();
 // mock the sessionStorage
 global.sessionStorage = storageMock();
+
+// Mock request animation frame
+
+window.requestAnimationFrame = () => {};

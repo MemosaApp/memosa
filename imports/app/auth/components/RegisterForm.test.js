@@ -2,7 +2,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { mount, shallow } from 'enzyme';
 import sinon from 'sinon';
-import RegisterForm from './RegisterForm';
+import { RegisterForm } from './RegisterForm';
 
 describe('<RegisterForm />', () => {
   it('has a email field', () => {

@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 
 import SelectableList from '/imports/theme/forms/SelectableList';
 import CircularLoading from '/imports/theme/loaders/CircularLoading';
-import Error from '/imports/theme/errors/Error';
 import ListItem from './ListItem';
 import connectNotebooks from '../hocs/Notebooks';
 
@@ -12,10 +11,10 @@ class NotebookSelectModal extends Component {
   static propTypes = {
     defaultValue: string,
     handleCreateNotebook: func,
-    notebooksReady: bool,
     notebooks: arrayOf(shape({
-      // XXX
+      // TODO
     })),
+    notebooksReady: bool,
     onCancel: func,
     onNotebookSelect: func,
   }
@@ -94,7 +93,7 @@ class NotebookSelectModal extends Component {
 
   render() {
     const { onCancel } = this.props;
-    const { error, selectedNotebook } = this.state;
+    const { selectedNotebook } = this.state;
 
     const isNotebookSelected = Boolean(selectedNotebook);
 

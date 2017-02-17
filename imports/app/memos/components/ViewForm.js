@@ -142,7 +142,11 @@ class ViewMemosForm extends Component {
       // Create a memo
       this.props.handleCreateMemo(memo, (err, id) => {
         if (err) {
-          // XXX handle error
+          this.setState({
+            errors: {
+              create: 'Failed to create your memo, please try again later',
+            },
+          });
         }
 
         this.setState({
@@ -156,7 +160,11 @@ class ViewMemosForm extends Component {
       // Create an existing memo
       this.props.handleUpdateMemo(memo._id, memo, (err) => {
         if (err) {
-          // XXX handle error
+          this.setState({
+            errors: {
+              create: 'Failed to save your memo, please try again later',
+            },
+          });
         }
       });
     }
