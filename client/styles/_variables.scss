@@ -5,7 +5,7 @@ $app-memosa-light: #FBFBFB;
 $app-balanced: #52B548;
 $app-energized: #EFCB95;
 $app-jet: #F03941;
-$app-positive: #01A8A3;
+$app-positive: lighten($app-memosa-dark, 70%);
 
 // XXX kill this color
 $app-royal: #7E50AC;

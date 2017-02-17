@@ -3,80 +3,6 @@
  *
  * ANY CHANGE YOU MAKE TO THIS WILL BE OVERWRITTEN
  */
-
-$background-color: #1B101F;
-$loader-color: #FE665C;
-
-$loader-size: em(32);
-$loader-animation-duration: 1.15s;
-
-
-.circular-loading,
-.circular-loading__figure {
-  @include position(absolute, 50% null null 50%);
-  @include transform(translate(-50%, -50%));
-}
-
-.circular-loading {
-  @include size($loader-size 0);
-  overflow: visible;
-  padding-top: $loader-size;
-}
-
-.circular-loading__figure {
-  @include size(0);
-  box-sizing: border-box;
-  border: 0 solid $loader-color;
-  border-radius: 50%;
-  @include animation(loader-figure $loader-animation-duration infinite $ease-out-cubic);
-}
-
-.circular-loading__label {
-  float: left;
-  margin-left: 50%;
-  @include transform(translateX(-50%));
-  margin: 0.5em 0 0 50%;
-
-  font-size: em(14);
-  letter-spacing: 0.1em;
-  line-height: 1.5em;
-  color: mix($loader-color, $background-color);
-  white-space: nowrap;
-  @include animation(loader-label $loader-animation-duration infinite $ease-out-cubic);
-}
-
-
-@include keyframes(loader-figure) {
-  0% {
-    @include size(0);
-  }
-
-  30% {
-    @include size($loader-size);
-    border-width: $loader-size / 2;
-    opacity: 1;
-  }
-
-  100% {
-    @include size($loader-size);
-    border-width: 0;
-    opacity: 0;
-  }
-}
-
-@include keyframes(loader-label) {
-  0% {
-    opacity: 0.35;
-  }
-
-  30% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0.35;
-  }
-}
 .login-form__group {
   @include form-group;
 
@@ -212,7 +138,102 @@ $loader-animation-duration: 1.15s;
   }
 }
 .view-form-layout__button {
-  margin-top: 10px;
+  background-color: transparent;
+  margin-top: 0px;
+
+  > * {
+    height: 40pt;
+  }
+
+  path {
+    @include transition(path 0.2s ease-in);
+  }
+}
+
+.view-form-layout__button--transitioning {
+  z-index: 10 !important;
+// 
+  > * {
+    background-color: $app-memosa !important;
+    transform: scale(50) !important;
+  }
+
+  svg {
+    filter: none !important;
+  }
+
+  path {
+    opacity: 0;
+  }
+}
+.notebooks-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.notebooks-list__item-wrapper {
+  width: 50%;
+}
+
+$notebook-height: 230px;
+$notebook-width: 3.5 / 5 * $notebook-height;
+$notebook-ledger-height: $notebook-height / 2.1;
+
+.notebooks-list__item {
+  background-color: #c34244;
+  border-radius: 0px 8px 8px 0px;
+  box-shadow: 4px 3px 10px rgba(21, 21, 21, 0.3);
+  color: $app-memosa-light;
+  height: $notebook-height;
+  margin: 10px auto;
+  padding-top: $notebook-height / 2 - $notebook-ledger-height / 2;
+  position: relative;
+  width: $notebook-width;
+
+  &:before {
+    content: ' ';
+    border: 1px solid #b43d3f;
+    position: absolute;
+    left: 5px;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+
+  .notebook-list-item__created {
+    font-size: 12px;
+    color: darken($app-memosa-light, 60%);
+  }
+}
+
+.notebooks-list__item-inner {
+  background-color: rgb(21, 21, 21);
+  font-size: 16px;
+  height: $notebook-ledger-height;
+  padding: 20px;
+  position: relative;
+  width: $notebook-width;
+  z-index: 2;
+}
+
+
+.notebooks-list__item-wrapper--default {
+  .notebooks-list__item {
+    background-color: transparent;
+    border: 2px solid white;
+    box-shadow: none;
+
+    &:before {
+      border: 1px solid #eee;
+    }
+  }
+
+  .notebooks-list__item-inner {
+    background-color: transparent;
+  }
+}
+.view-list-layout__view {
+  background-color: $app-memosa;
 }
 .button--icon {
   background-color: transparent;
@@ -221,9 +242,9 @@ $loader-animation-duration: 1.15s;
   width: auto;
 
   > * {
+    background-color: transparent;
     transform: scale(1);
     transition: all .1s ease-in;
-    transition-property: scale translateY;
 
     svg {
       transition-property: filter;
@@ -248,5 +269,232 @@ $loader-animation-duration: 1.15s;
         filter: drop-shadow(0px 1px 2px #aaa);
       }
     }
+  }
+}
+.selectable-list {
+  width: 100%;
+}
+
+.selectable-list__item {
+  background-color: transparent;
+  border: 1px solid #aaa;
+  text-align: inherit;
+
+  @include transition(background-color .2s $ease-in-sine);
+
+  width: 100%;
+
+  & + & {
+    border-top: 0px;
+  }
+}
+
+.selectable-list__item--selected {
+  background-color: transparentize($app-memosa, .5);
+}
+
+$background-color: #1B101F;
+$loader-color: #FE665C;
+
+$loader-size: em(32);
+$loader-animation-duration: 1.15s;
+
+
+.circular-loading,
+.circular-loading__figure {
+  @include position(absolute, 50% null null 50%);
+  @include transform(translate(-50%, -50%));
+}
+
+.circular-loading {
+  @include size($loader-size 0);
+  overflow: visible;
+  padding-top: $loader-size;
+}
+
+.circular-loading__figure {
+  @include size(0);
+  box-sizing: border-box;
+  border: 0 solid $loader-color;
+  border-radius: 50%;
+  @include animation(loader-figure $loader-animation-duration infinite $ease-out-cubic);
+}
+
+.circular-loading__label {
+  float: left;
+  margin-left: 50%;
+  @include transform(translateX(-50%));
+  margin: 0.5em 0 0 50%;
+
+  font-size: em(14);
+  letter-spacing: 0.1em;
+  line-height: 1.5em;
+  color: mix($loader-color, $background-color);
+  white-space: nowrap;
+  @include animation(loader-label $loader-animation-duration infinite $ease-out-cubic);
+}
+
+
+@include keyframes(loader-figure) {
+  0% {
+    @include size(0);
+  }
+
+  30% {
+    @include size($loader-size);
+    border-width: $loader-size / 2;
+    opacity: 1;
+  }
+
+  100% {
+    @include size($loader-size);
+    border-width: 0;
+    opacity: 0;
+  }
+}
+
+@include keyframes(loader-label) {
+  0% {
+    opacity: 0.35;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.35;
+  }
+}
+
+$fg: $app-memosa;
+// Max number of menu items
+$menu-items: 10;
+
+%goo {
+  filter: url('#shadowed-goo');
+}
+
+%ball {
+  $width: 40pt;
+  background: $fg;
+  border-radius: 100%;
+  width: $width;
+  height: $width;
+  margin-left: -$width/2;
+  position: absolute;
+  top: 20px;
+  color: white;
+  text-align: center;
+  line-height: 80px;
+  transform: translate3d(0,0,0);
+  transition: transform ease-out 200ms;
+}
+
+.gooey-menu__open {
+  display: none;
+}
+
+.gooey-menu__item {
+  @extend %ball;
+}
+
+.gooey-menu {
+  @extend %goo;
+
+  $width: 380px;
+  position: absolute;
+  left: 50%;
+  margin-left: -$width/2;
+  padding-top: 20px;
+  padding-left: $width/2;
+  width: $width;
+  height: 0px;
+  box-sizing: border-box;
+  font-size: 20px;
+  text-align: left;
+}
+
+.gooey-menu__item {
+  padding: 0 !important;
+
+  &:hover {
+    background: white;
+    color: $fg;
+  }
+  @for $i from 1 through $menu-items {
+    &:nth-child(#{$i+2}){
+      transition-duration: 10ms+(60ms*($i));
+    }
+  }
+}
+
+.gooey-menu__open__button {
+  @extend %ball;
+
+  border: 2px solid $app-memosa-dark;
+  padding: 0 !important;
+  z-index: 2 !important;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+  transition-duration: 400ms;
+  transform: scale(1.1,1.1) translate3d(0,0,0);
+  cursor: pointer;
+}
+.gooey-menu__open__button:hover {
+  transform: scale(1.2,1.2) translate3d(0,0,0);
+}
+.gooey-menu--open .gooey-menu__open__button {
+  transition-timing-function: linear;
+  transition-duration: 200ms;
+  transform: scale(0.8,0.8) translate3d(0,0,0);
+}
+
+.gooey-menu--open .gooey-menu__item {
+  transition-timing-function: cubic-bezier(0.935, 0.000, 0.340, 1.330);
+
+  @for $i from 1 through $menu-items {
+    &:nth-child(#{$i+2}){
+      transition-duration: 80ms+(80ms*$i);
+    }
+  }
+}
+
+
+.gooey-menu__line {
+  $width: 20px;
+  $height: 3px;
+  width: $width;
+  height: $height;
+  background: $app-memosa-dark;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -$width/2;
+  margin-top: -$height/2;
+  transition: transform 200ms;
+}
+
+$hamburger-spacing:8px;
+
+.gooey-menu__line-1{
+  transform:translate3d(0,-$hamburger-spacing,0);
+}
+.gooey-menu__line-2{
+  transform:translate3d(0,0,0);
+}
+.gooey-menu__line-3{
+  transform:translate3d(0,$hamburger-spacing,0);
+}
+
+.gooey-menu--open .gooey-menu__open__button {
+  .gooey-menu__line-1 {
+    transform:translate3d(0,0,0) rotate(45deg);
+  }
+  .gooey-menu__line-2 {
+    transform:translate3d(0,0,0) scale(0.1,1);
+  }
+  .gooey-menu__line-3 {
+    transform:translate3d(0,0,0) rotate(-45deg);
   }
 }

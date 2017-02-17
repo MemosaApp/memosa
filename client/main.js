@@ -7,10 +7,10 @@ import ReactDOM, { render } from 'react-dom';
 
 import a11y from 'react-a11y';
 
-import '/imports/startup';
+import '/imports/theme/init';
 import routes from '/imports/routes';
 
-import '/imports/auth/startup/config';
+import '/imports/app/auth/meteor/config';
 
 Meteor.startup(() => {
   if (Meteor.isDevelopment) {

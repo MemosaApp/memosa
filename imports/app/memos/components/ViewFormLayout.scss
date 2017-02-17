@@ -1,0 +1,29 @@
+.view-form-layout__button {
+  background-color: transparent;
+  margin-top: 0px;
+
+  > * {
+    height: 40pt;
+  }
+
+  path {
+    @include transition(path 0.2s ease-in);
+  }
+}
+
+.view-form-layout__button--transitioning {
+  z-index: 10 !important;
+// 
+  > * {
+    background-color: $app-memosa !important;
+    transform: scale(50) !important;
+  }
+
+  svg {
+    filter: none !important;
+  }
+
+  path {
+    opacity: 0;
+  }
+}

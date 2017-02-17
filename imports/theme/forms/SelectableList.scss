@@ -1,0 +1,21 @@
+.selectable-list {
+  width: 100%;
+}
+
+.selectable-list__item {
+  background-color: transparent;
+  border: 1px solid #aaa;
+  text-align: inherit;
+
+  @include transition(background-color .2s $ease-in-sine);
+
+  width: 100%;
+
+  & + & {
+    border-top: 0px;
+  }
+}
+
+.selectable-list__item--selected {
+  background-color: transparentize($app-memosa, .5);
+}

@@ -1,29 +1,37 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import { Router, browserHistory } from 'react-router';
-import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
+import { Route, Router } from 'react-router';
 
-import track from '/imports/analytics';
-import appRoutes from '/imports/app/routes';
-import ContextProvider from '/imports/app/components/ContextProvider';
+import App from '/imports/app/main/components/App';
+import ContextProvider from '/imports/support/dependencyInjections/ContextProvider';
+import { routes as authRoutes } from '/imports/app/auth';
+import { isLoggedOut } from '/imports/app/auth/meteor/utilities'; // NOTE direct meteor usage
+import memosRoutes from '/imports/app/memos/routes';
+import notebooksRoutes from '/imports/app/notebooks/routes';
 
-import reducers from './reducers';
+import { store, history } from './store';
 
-const middleware = routerMiddleware(browserHistory);
-const store = createStore(reducers, applyMiddleware(middleware));
-
-const history = syncHistoryWithStore(browserHistory, store);
-
-history.listen(location => track({
-  pathname: location.pathname,
-}));
+const requireAuth = (nextState, replace) => {
+  if (isLoggedOut()) {
+    replace({
+      pathname: '/login',
+      state: { nextPathname: nextState.location.pathname },
+    });
+  }
+};
 
 export default (
   <Provider store={store}>
     <ContextProvider>
       <Router history={history}>
-        {appRoutes}
+        <Route component={App} path="/">
+          {authRoutes}
+
+          <Route onEnter={requireAuth}>
+            {memosRoutes}
+            {notebooksRoutes}
+          </Route>
+        </Route>
       </Router>
     </ContextProvider>
   </Provider>

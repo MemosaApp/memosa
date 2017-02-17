@@ -1,10 +1,15 @@
-$navigation-tall-height: 75px;
+$navigation-tall-height: 95px;
 
 .bar--tall {
   height: $navigation-tall-height;
 
   .title {
     height: $navigation-tall-height;
+    overflow: visible;
+  }
+
+  .buttons {
+    margin: 22px;
   }
 }
 
