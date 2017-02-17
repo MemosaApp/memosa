@@ -5,9 +5,12 @@ cache:
     - "node_modules"
     - "~/.npm"
     - "~/.meteor"
+    - ".yarn"
 
 before_script:
-  - npm install
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 0.16.1
+  - yarn config set cache-folder .yarn
+  - yarn install
 
 stages:
   - test
@@ -16,7 +19,7 @@ stages:
 all_tests:
   stage: test
   script:
-    - npm run test
+    - yarn run test
 
 #
 # dependencies:
