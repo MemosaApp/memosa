@@ -1,16 +1,23 @@
 image: node:7.0.0
 
-rspec:
-  cache:
-    paths:
-      - "node_modules"
-      - "~/.npm"
-      - "~/.meteor"
+cache:
+  paths:
+    - "node_modules"
+    - "~/.npm"
+    - "~/.meteor"
+
+before_script:
+  - npm install
+
+stages:
+  - test
+  - deploy
 
 all_tests:
+  stage: test
   script:
-    - npm install
     - npm run test
+
 #
 # dependencies:
 #   cache_directories:
