@@ -1,0 +1,17 @@
+{
+  "include": [
+    "imports/**/*.js"
+  ],
+  "exclude": [
+    "imports/**/*.story.js"
+  ],
+  "reporter": [
+    "lcov",
+    "text-summary"
+  ],
+  "extension": [
+    ".jsx"
+  ],
+  "cache": true,
+  "all": true
+}
