@@ -6,6 +6,9 @@ module.exports = {
       // pem:
       // password:
       // or leave blank for authenticate from ssh-agent
+      opts: {
+        port: 22,
+      },
     }
   },
 
@@ -18,11 +21,12 @@ module.exports = {
 
     buildOptions: {
       // build with the debug mode on
+      cleanAfterBuild: true, // default
       debug: true,
     },
 
     env: {
-      ROOT_URL: 'dev.memosa.tech',
+      ROOT_URL: 'https://dev.memosa.tech',
       MONGO_URL: 'mongodb://localhost/meteor',
     },
 
@@ -35,12 +39,14 @@ module.exports = {
     },
 
     // change to 'kadirahq/meteord' if your app is not using Meteor 1.4
-    dockerImage: 'abernix/meteord:base',
-    deployCheckWaitTime: 60,
+    docker: {
+      image: 'abernix/meteord:base'
+    },
+    deployCheckWaitTime: 120,
 
     // Show progress bar while uploading bundle to server
     // You might need to disable it on CI servers
-    enableUploadProgressBar: false
+    enableUploadProgressBar: true
   },
 
   mongo: {
