@@ -44,6 +44,7 @@ deploy_dev:
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
     - npm install -g mup
+    - curl https://install.meteor.com | /bin/sh
   script:
     - cd ./.deploy-dev
     - mup setup
