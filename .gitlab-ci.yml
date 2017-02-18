@@ -51,6 +51,7 @@ deploy_dev:
     # Install meteor if it does not exist
     - export PATH="$HOME/meteor:$PATH"
     - bash ./.deploy/install-meteor.sh
+    - meteor npm install
   script:
     - cd ./.deploy-dev
     - mup setup
