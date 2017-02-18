@@ -13,5 +13,6 @@
     ".jsx"
   ],
   "cache": true,
-  "all": true
+  "all": true,
+  "report-dir": "./.coverage"
 }
