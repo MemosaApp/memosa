@@ -49,7 +49,7 @@ deploy_dev:
   script:
     - cd ./.deploy-dev
     - mup setup
-    - mup deploy
+    - METEOR_ALLOW_SUPERUSER=true mup deploy
 
 #
 # dependencies:
