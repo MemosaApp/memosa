@@ -1,4 +1,4 @@
-image: s1rd4v3/gitlab-runner-meteor
+image: node:7.0.0
 
 cache:
   paths:
@@ -44,7 +44,8 @@ deploy_dev:
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
     - npm install -g mup
-    - curl https://install.meteor.com/ | sh
+    - git clone git://github.com/meteor/meteor.git ~/meteor
+    - export PATH="$HOME/meteor:$PATH"
   script:
     - cd ./.deploy-dev
     - mup setup
