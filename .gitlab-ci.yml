@@ -16,7 +16,7 @@ before_script:
   - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 0.16.1
   - export PATH="$HOME/.yarn/bin:$PATH"
   - yarn config set cache-folder .yarn
-  - yarn install
+  - sh ./.deploy/install-yarn.sh
 
 all_tests:
   stage: test
@@ -44,13 +44,13 @@ deploy_dev:
     # you will overwrite your user's SSH config.
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+
+    # Install mup
     - npm install -g mup
-    - git clone git://github.com/meteor/meteor.git ~/meteor
-    - cd ~/meteor
-    - git checkout tags/release/METEOR@1.4.2.3
-    - git submodule update --init --recursive
-    - cd -
+
+    # Install meteor if it does not exist
     - export PATH="$HOME/meteor:$PATH"
+    - sh ./.deploy/install-meteor.sh
   script:
     - cd ./.deploy-dev
     - mup setup
