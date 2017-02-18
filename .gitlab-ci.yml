@@ -45,6 +45,7 @@ deploy_dev:
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
     - npm install -g mup
     - git clone git://github.com/meteor/meteor.git ~/meteor
+    - git checkout tags/release/METEOR@1.4.2.3
     - export PATH="$HOME/meteor:$PATH"
   script:
     - cd ./.deploy-dev
