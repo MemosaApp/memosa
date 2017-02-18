@@ -46,7 +46,7 @@ module.exports = {
 
     // Show progress bar while uploading bundle to server
     // You might need to disable it on CI servers
-    enableUploadProgressBar: true
+    enableUploadProgressBar: false
   },
 
   mongo: {
