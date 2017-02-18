@@ -5,6 +5,7 @@ cache:
     - "node_modules"
     - "~/.npm"
     - "~/.meteor"
+    - "~/meteor"
     - ".yarn"
 
 stages:
@@ -47,6 +48,7 @@ deploy_dev:
     - git clone git://github.com/meteor/meteor.git ~/meteor
     - cd ~/meteor
     - git checkout tags/release/METEOR@1.4.2.3
+    - git submodule update --init --recursive
     - cd -
     - export PATH="$HOME/meteor:$PATH"
   script:
