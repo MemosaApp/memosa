@@ -47,7 +47,7 @@ deploy_dev:
 
     # Try to install fibers
     - apt-get update
-    - apt-get install g++ build-essential
+    - apt-get install --yes g++ build-essential
 
     # Install mup
     - npm install -g mup
