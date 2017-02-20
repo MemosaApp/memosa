@@ -46,6 +46,7 @@ deploy_dev:
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
 
     # Try to install fibers
+    - apt-get update
     - apt-get install g++ build-essential
 
     # Install mup
