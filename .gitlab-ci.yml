@@ -84,7 +84,6 @@ deploy_dev:
     # Install mup locally so we can use it from a relative path
     - npm install -g mup
   script:
-    - yarn run predeploy
     - cd ./.deploy-dev
     - mup setup
     - mup deploy
