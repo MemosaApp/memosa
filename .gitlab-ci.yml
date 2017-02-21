@@ -1,4 +1,4 @@
-image: node:4.0.0
+image: node:4.2.2
 
 cache:
   paths:
@@ -48,6 +48,7 @@ deploy_dev:
     # Try to install fibers
     - apt-get update
     - apt-get install --yes g++ build-essential
+    - npm install -g node-gyp
 
     # Install mup
     - npm install -g mup
