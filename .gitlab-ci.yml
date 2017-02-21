@@ -24,11 +24,30 @@ before_script:
   - yarn config set cache-folder .yarn
   - yarn install
 
-all_tests:
+# Run Spec Tests
+#
+# We always run spec tests on all branches and commits
+#
+# The linter is automatically called at this point
+# as a sort of pre-flight before the tests
+spec_tests:
   stage: test
   script:
     - yarn run test
 
+# Run Integration Tests
+#
+# Integration tests run before we touch any important
+# branches (develop + master)
+integration_tests:
+  only:
+    - develop
+    - master
+  stage: test
+  script:
+    - yarn run test:integration
+
+# Deploy to Dev Servers
 deploy_dev:
   only:
     - develop
@@ -51,13 +70,14 @@ deploy_dev:
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
 
-    - npm install -g mup
     - meteor npm install
     - meteor npm rebuild
+    # Install mup locallay so we can use it from a relative path
+    - npm install mup
   script:
     - cd ./.deploy-dev
-    - mup setup
-    - mup deploy
+    - ../node_modules/.bin/mup setup
+    - ../node_modules/.bin/mup deploy
 
 #
 # dependencies:
