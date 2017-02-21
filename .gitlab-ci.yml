@@ -1,4 +1,10 @@
-image: node:4.2.2
+image: christiankiely/meteord:test
+
+services:
+  - mongo
+
+variables:
+  METEOR_ALLOW_SUPERUSER: "true"
 
 cache:
   paths:
@@ -45,22 +51,13 @@ deploy_dev:
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
 
-    # Try to install fibers
-    - apt-get update
-    - apt-get install --yes g++ build-essential
-    - npm install -g node-gyp
-
-    # Install mup
     - npm install -g mup
-
-    # Install meteor if it does not exist
-    - export PATH="$HOME/meteor:$PATH"
-    - bash ./.deploy/install-meteor.sh
     - meteor npm install
+    - meteor npm rebuild
   script:
     - cd ./.deploy-dev
     - mup setup
-    - METEOR_ALLOW_SUPERUSER=true mup deploy
+    - mup deploy
 
 #
 # dependencies:
