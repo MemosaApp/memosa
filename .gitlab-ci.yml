@@ -82,7 +82,6 @@ deploy_dev:
     # Install mup locallay so we can use it from a relative path
     - npm install mup
   script:
-    - yarn run predeploy
     - cd ./.deploy-dev
     - ../node_modules/.bin/mup setup
     - ../node_modules/.bin/mup deploy
