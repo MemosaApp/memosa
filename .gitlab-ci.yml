@@ -75,6 +75,7 @@ deploy_dev:
     # Install mup locallay so we can use it from a relative path
     - npm install mup
   script:
+    - yarn run predeploy
     - cd ./.deploy-dev
     - ../node_modules/.bin/mup setup
     - ../node_modules/.bin/mup deploy
@@ -87,7 +88,7 @@ deploy_dev:
 #     # Cache Meteor
 #     - if [ -d ~/.meteor ]; then sudo ln -s ~/.meteor/meteor /usr/local/bin/meteor; fi
 #     - if [ ! -e $HOME/.meteor/meteor ]; then curl https://install.meteor.com | sh; fi
-#     - npm install -g chimpz
+#     - npm install -g chimp
 #     - npm install -g selenium-standalone
 #     - npm install
 # test:
