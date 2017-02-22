@@ -49,16 +49,13 @@ integration_tests:
     - yarn run test:integration
 
 # Deploy to Dev Servers
+#
+# No yarn here, only tears
 deploy_dev:
   only:
     - develop
   stage: deploy
   before_script:
-    - export PATH="$HOME/.yarn/bin:$PATH"
-    # Yarn's install is not cacheable :(
-    - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 0.16.1
-    - yarn config set cache-folder .yarn
-
     # Install ssh-agent if not already installed, it is required by Docker.
     # (change apt-get to yum if you use a CentOS-based image)
     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
@@ -79,8 +76,7 @@ deploy_dev:
     - apt-get update
     - apt-get install build-essential
     - npm install -g node-gyp
-
-    - yarn install --production
+    - npm install --production
   script:
     - cd ./.deploy-dev
     - ../node_modules/.bin/mup setup
