@@ -58,7 +58,6 @@ deploy_dev:
     # Yarn's install is not cacheable :(
     - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 0.16.1
     - yarn config set cache-folder .yarn
-    - yarn install
 
     # Install ssh-agent if not already installed, it is required by Docker.
     # (change apt-get to yum if you use a CentOS-based image)
@@ -80,7 +79,7 @@ deploy_dev:
     - apt-get update
     - apt-get install build-essential
     - npm install -g node-gyp
-    - meteor npm install
+    - meteor npm install --production
     - meteor npm rebuild
 
     # Install mup locallay so we can use it from a relative path
