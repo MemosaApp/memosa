@@ -32,6 +32,7 @@ before_script:
 # The linter is automatically called at this point
 # as a sort of pre-flight before the tests
 spec_tests:
+  coverage: /^Statements\s*:\s*([^%]+)/
   stage: test
   script:
     - yarn run test
