@@ -76,10 +76,11 @@ deploy_dev:
     # you will overwrite your user's SSH config.
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-    - npm install -g mup
+    - npm install mup
   script:
-    - mup setup
-    - mup deploy
+    - cd ./.deploy-dev
+    - ../node_modules/.bin/mup setup
+    - ../node_modules/.bin/mup deploy
     # - scp ./deploy-dev/build.sh root@138.68.61.242/root
     # - ssh root@138.68.61.242 'bash -s ' < ./deploy-dev/build.sh
 
