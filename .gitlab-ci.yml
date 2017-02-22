@@ -76,6 +76,14 @@ deploy_dev:
     # you will overwrite your user's SSH config.
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+
+    - apt-get update
+    - apt-get install build-essential
+    - npm install -g node-gyp
+    - meteor npm install
+    - meteor npm rebuild
+
+    # Install mup locallay so we can use it from a relative path
     - npm install mup
   script:
     - cd ./.deploy-dev
