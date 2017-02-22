@@ -15,15 +15,15 @@ cache:
     - ".yarn"
 
 stages:
-  # - test
+  - test
   - deploy
-#
-# before_script:
-#   - export PATH="$HOME/.yarn/bin:$PATH"
-#   # Yarn's install is not cacheable :(
-#   - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 0.16.1
-#   - yarn config set cache-folder .yarn
-#   - yarn install
+
+before_script:
+  - export PATH="$HOME/.yarn/bin:$PATH"
+  # Yarn's install is not cacheable :(
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 0.16.1
+  - yarn config set cache-folder .yarn
+  - yarn install
 
 # Run Spec Tests
 #
@@ -31,22 +31,22 @@ stages:
 #
 # The linter is automatically called at this point
 # as a sort of pre-flight before the tests
-# spec_tests:
-#   stage: test
-#   script:
-#     - yarn run test
+spec_tests:
+  stage: test
+  script:
+    - yarn run test
 
 # Run Integration Tests
 #
 # Integration tests run before we touch any important
 # branches (develop + master)
-# integration_tests:
-#   only:
-#     - develop
-#     - master
-#   stage: test
-#   script:
-#     - yarn run test:integration
+integration_tests:
+  only:
+    - develop
+    - master
+  stage: test
+  script:
+    - yarn run test:integration
 
 # Deploy to Dev Servers
 deploy_dev:
@@ -79,17 +79,12 @@ deploy_dev:
     - apt-get update
     - apt-get install build-essential
     - npm install -g node-gyp
-    - meteor npm install --production
-    - meteor npm rebuild
 
-    # Install mup locallay so we can use it from a relative path
-    - npm install mup
+    - yarn install --production
   script:
     - cd ./.deploy-dev
     - ../node_modules/.bin/mup setup
     - ../node_modules/.bin/mup deploy
-    # - scp ./deploy-dev/build.sh root@138.68.61.242/root
-    # - ssh root@138.68.61.242 'bash -s ' < ./deploy-dev/build.sh
 
 #
 # dependencies:
