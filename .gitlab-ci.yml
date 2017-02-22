@@ -1,10 +1,10 @@
-image: christiankiely/meteord:test
+image: blurri/meteor-node
+
+variables:
+    METEOR_ALLOW_SUPERUSER: "true"
 
 services:
   - mongo
-
-variables:
-  METEOR_ALLOW_SUPERUSER: "true"
 
 cache:
   paths:
@@ -15,7 +15,7 @@ cache:
     - ".yarn"
 
 stages:
-  #- test
+  - test
   - deploy
 
 before_script:
@@ -31,22 +31,22 @@ before_script:
 #
 # The linter is automatically called at this point
 # as a sort of pre-flight before the tests
-# spec_tests:
-#   stage: test
-#   script:
-#     - yarn run test
+spec_tests:
+  stage: test
+  script:
+    - yarn run test
 
 # Run Integration Tests
 #
 # Integration tests run before we touch any important
 # branches (develop + master)
-# integration_tests:
-#   only:
-#     - develop
-#     - master
-#   stage: test
-#   script:
-#     - yarn run test:integration
+integration_tests:
+  only:
+    - develop
+    - master
+  stage: test
+  script:
+    - yarn run test:integration
 
 # Deploy to Dev Servers
 deploy_dev:
@@ -76,17 +76,11 @@ deploy_dev:
     # you will overwrite your user's SSH config.
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-
-    - npm install -g node-gyp
-    - meteor npm install
-    - meteor npm install --save bcrypt
-
-    # Install mup locally so we can use it from a relative path
-    - npm install -g mup
   script:
-    - cd ./.deploy-dev
     - mup setup
     - mup deploy
+    # - scp ./deploy-dev/build.sh root@138.68.61.242/root
+    # - ssh root@138.68.61.242 'bash -s ' < ./deploy-dev/build.sh
 
 #
 # dependencies:
