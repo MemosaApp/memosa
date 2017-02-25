@@ -17,7 +17,9 @@
     "predeploy": "meteor npm prune",
     "lint": "eslint .",
     "lint:watch": "nodemon --watch imports --watch client --watch server --exec \"npm run lint\"",
-    "postinstall": "./.scripts/postinstall.sh"
+    "postinstall": "./.scripts/postinstall.sh",
+    "seed": "node ./.scripts/seed.js",
+    "teardown": "node ./.scripts/teardown.js"
   },
   "dependencies": {
     "aws-lib": "^0.3.0",
@@ -36,6 +38,8 @@
     "classnames": "^2.2.5",
     "debounce": "^1.0.0",
     "draft-js": "^0.9.1",
+    "fake-oranges": "^1.1.0",
+    "faker": "^4.1.0",
     "fibers": "^1.0.15",
     "materialize-css": "^0.97.8",
     "md5": "^2.2.1",
