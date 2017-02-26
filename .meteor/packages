@@ -18,8 +18,6 @@ ecmascript@0.6.1              # Enable ECMAScript2015+ syntax in app code
 shell-server@0.2.1            # Server-side component of the `meteor shell` command
 
 react-meteor-data
-practicalmeteor:mocha@2.4.5_6
-dispatch:mocha-phantomjs
 ddp-rate-limiter@1.0.6
 accounts-ui@1.1.9
 service-configuration@1.0.11

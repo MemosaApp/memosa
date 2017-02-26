@@ -37,17 +37,20 @@ spec_tests:
   script:
     - yarn run test
 
-# Run Integration Tests
+# Run Acceptance Tests
 #
-# Integration tests run before we touch any important
+# Acceptance tests run before we touch any important
 # branches (develop + master)
-integration_tests:
+acceptance_tests:
   only:
     - develop
     - master
   stage: test
+  before_script:
+    - npm install -g selenium-standalone
   script:
-    - yarn run test:integration
+    - yarn run seed
+    - meteor npm run acceptance:ci
 
 # Deploy to Dev Servers
 #
@@ -89,10 +92,8 @@ deploy_dev:
 #
 #   override:
 #     # Cache Meteor
-#     - if [ -d ~/.meteor ]; then sudo ln -s ~/.meteor/meteor /usr/local/bin/meteor; fi
-#     - if [ ! -e $HOME/.meteor/meteor ]; then curl https://install.meteor.com | sh; fi
 #     - npm install -g chimp
-#     - npm install -g selenium-standalone
+#     -
 #     - npm install
 # - ./node_modules/spacejam/bin/spacejam test
 #     --driver-package practicalmeteor:mocha-console-runner

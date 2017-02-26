@@ -27,11 +27,12 @@ Then go to [http://localhost:3000/](http://localhost:3000/).
 * Watch mocha tests: `$ yarn run test:watch`
 * Run coverage: `$ yarn run test:cover:mocha`
 
-## Feature tests
+## Acceptance tests
 
-Current WIP:
-
-* Run `$ yarn run test:chimp-wip`
+1. Teardown your mongo database: `$ npm run teardown`.
+2. Seed your mongo database: `$ npm run seed`.
+3. Run Meteor in one terminal: `$ npm start`.
+4. Run Chimp in another terminal: `$ npm run acceptance:watch`.
 
 ## Seeding
 
