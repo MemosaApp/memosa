@@ -2,7 +2,7 @@
 import { expect } from 'chai';
 
 import { BASE_URL } from './utilities/constants';
-import login from './utilities/login';
+// import login from './utilities/login';
 
 describe('login', () => {
   beforeEach(() => {
@@ -11,7 +11,7 @@ describe('login', () => {
     // Log user out
   });
 
-  it('has a login form @watch', () => {
+  it('has a login form', () => {
     expect(browser.element('input[type=email]')).to.not.be.null;
     expect(browser.element('input[type=password]')).to.not.be.null;
   });

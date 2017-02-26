@@ -47,6 +47,7 @@ acceptance_tests:
     - master
   stage: test
   script:
+    - cp settings.example.json settings.json
     - npm install -g selenium-standalone
     - yarn run seed
     - meteor npm run acceptance:ci
