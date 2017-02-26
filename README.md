@@ -10,6 +10,17 @@ The Memosa Meteor FE, Mobile, and BE application.
 
 [![build status](https://gitlab.com/memosa/memosa/badges/develop/build.svg)](https://gitlab.com/memosa/memosa/commits/develop) [![coverage report](https://gitlab.com/memosa/memosa/badges/develop/coverage.svg)](https://gitlab.com/memosa/memosa/commits/develop)
 
+## Getting Started
+
+Welcome to the Memosa repo, lucky you! Here's some quick steps to get started!
+
+1. Install Meteor
+2. Install Yarn
+3. `cp settings.example.json settings.json`
+4. `npm run seed`
+5. `npm start`
+6. Check out [http://localhost:3000/](http://localhost:3000/).
+
 ## Running the app
 
 ```
