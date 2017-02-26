@@ -7,6 +7,7 @@ const Memos = new Mongo.Collection('memos');
 
 Memos.schema = new SimpleSchema({
   body: { type: String },
+  created: { type: Date },
   notebookId: { type: String },
   ownerId: { type: String },
 });

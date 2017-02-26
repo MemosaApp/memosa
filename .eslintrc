@@ -33,6 +33,7 @@
     "chai-expect/missing-assertion": 2,
     "chai-expect/terminating-properties": 1,
 
+    "import/max-dependencies": "off",
     # Meteor uses absolute paths
     "import/no-absolute-path": "off",
     # We use connect()() which changes the name

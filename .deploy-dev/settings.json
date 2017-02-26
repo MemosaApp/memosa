@@ -1,4 +1,7 @@
 {
   "keys": {
+  },
+  "domains": {
+    "shortener": "https://dev.memosa.tech/s"
   }
 }
