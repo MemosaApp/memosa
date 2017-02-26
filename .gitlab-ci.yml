@@ -46,9 +46,8 @@ acceptance_tests:
     - develop
     - master
   stage: test
-  before_script:
-    - npm install -g selenium-standalone
   script:
+    - npm install -g selenium-standalone
     - yarn run seed
     - meteor npm run acceptance:ci
 
