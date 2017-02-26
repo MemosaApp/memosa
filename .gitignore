@@ -6,3 +6,4 @@ coverage
 npm-debug.log
 settings.json
 !.deploy-dev/settings.json
+build
