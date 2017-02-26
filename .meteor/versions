@@ -16,6 +16,7 @@ boilerplate-generator@1.0.11
 caching-compiler@1.1.9
 caching-html-compiler@1.1.0
 callback-hook@1.0.10
+cfs:http-methods@0.0.32
 check@1.2.5
 coffeescript@1.11.1_4
 ddp@1.2.5

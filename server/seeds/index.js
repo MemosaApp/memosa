@@ -7,16 +7,19 @@
 if (process.env.NODE_ENV === 'development') {
   import { seed as seedUsers, teardown as teardownUsers } from './users';
   import { seed as seedNotebooks, teardown as teardownNotebooks } from './notebooks';
+  import { seed as seedUrls, teardown as teardownUrls } from './urls';
 
   const seed = () => {
     console.log('SEEDING…'); // eslint-disable-line no-console
     seedUsers();
     seedNotebooks();
+    seedUrls();
     console.log('SEEDED!'); // eslint-disable-line no-console
   };
 
   const teardown = () => {
     console.log('TEARING DOWN…'); // eslint-disable-line no-console
+    teardownUrls();
     teardownNotebooks();
     teardownUsers();
     console.log('TEARED DOWN!'); // eslint-disable-line no-console

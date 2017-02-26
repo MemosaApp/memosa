@@ -1,4 +1,7 @@
 {
   "keys": {
+  },
+  "domains": {
+    "shortener": "http://localhost:3000/s"
   }
 }

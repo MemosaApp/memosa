@@ -28,3 +28,4 @@ accounts-password
 aldeed:simple-schema
 seba:minifiers-autoprefixer
 npm-bcrypt
+cfs:http-methods
