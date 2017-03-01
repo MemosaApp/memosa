@@ -10,7 +10,7 @@ import SelectModal from '/imports/app/notebooks/components/SelectModal';
 import MemoInputGroup from './MemoInputGroup';
 import connectNotebooks from '../hocs/Memos';
 
-const { func, object, shape, string } = PropTypes;
+const { func, object, shape } = PropTypes;
 
 class ViewMemosForm extends Component {
   static propTypes = {
@@ -18,7 +18,7 @@ class ViewMemosForm extends Component {
     handleSetNavigation: func.isRequired,
     handleUpdateMemo: func.isRequired,
     memo: shape({
-      body: string,
+      body: object,
     }),
   }
 

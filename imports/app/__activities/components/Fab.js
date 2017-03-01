@@ -4,7 +4,7 @@ import { push } from 'react-router-redux';
 import { Fab, FabButton, FabActions, FabAction } from 'react-fab';
 import Icon from 'reactionic-icons';
 
-import { MEMO_ROUTE, MEMO_CREATE_ROUTE } from '/imports/app/memos/constants';
+import { MEMOS_ROUTE, MEMOS_CREATE_ROUTE } from '/imports/app/memos/constants';
 import { GROUP_CREATE_ROUTE } from '/imports/app/groups/constants';
 
 const { func } = PropTypes;
@@ -18,7 +18,7 @@ class ActivityFab extends Component {
     event && event.preventDefault();
 
     this.props.handlePush(
-      `/${[MEMO_ROUTE, MEMO_CREATE_ROUTE].join('/')}`,
+      `/${[MEMOS_ROUTE, MEMOS_CREATE_ROUTE].join('/')}`,
     );
   }
 
