@@ -15,7 +15,7 @@ const parseMemo = (s = null) => {
 };
 
 const objectifyMemo = (editorState) => {
-  return JSON.stringify(convertToRaw(editorState.getCurrentContent()));
+  return convertToRaw(editorState.getCurrentContent());
 };
 
 export default class MemoInputGroup extends Component {

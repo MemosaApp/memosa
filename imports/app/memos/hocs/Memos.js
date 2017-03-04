@@ -33,12 +33,12 @@ class Memos extends Component {
   }
 }
 
-const mapDataToProps = ({ container }) => {
+const mapDataToProps = ({ container, notebookId }) => {
   const handleSubscribe = container.handleSubscribe;
   const handleCall = container.handleCall;
   const MemosCollection = container.Memos;
 
-  const memosHandle = handleSubscribe('memos.mine');
+  const memosHandle = handleSubscribe('memos', notebookId);
 
   const memosReady = memosHandle.ready();
   const memos = memosReady ? MemosCollection.find().fetch() : null;
